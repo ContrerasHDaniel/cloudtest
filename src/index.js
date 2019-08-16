@@ -34,6 +34,12 @@ app.use(session({
 app.use(flash());
 
 // Global vars
+var publicConfig = {
+	key: 'AIzaSyC5Jx2pqC6kJCEmSP_1yoVdGmvr6HZUJSI',
+	stagger_time:       1000, // for elevationPath
+	encode_polylines:   false,
+	secure:             true
+  };
 
 // Routes
 app.use(require('./routes/index'));
