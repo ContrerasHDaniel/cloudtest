@@ -2,14 +2,17 @@ const express = require('express');
 const router = express.Router();
 const DeviceGPS = require('../models/DeviceGPS');
 
-router.post('/dgps', async (req, res) => {    
-    const { name, group_id, lat, lng } = req.body;
-    //validacion
-
-    const newReg = new DeviceGPS({name,group_id,lat,lng});
-    await newReg.save();
-    res.send('ok');
-
+router.post('/devices/dgps', async (req, res) => {    
+    const {_id, name, group_id, lat, lng } = req.body;
+    try{
+        const newReg = new DeviceGPS({_id:_id, name:name, group_id:group_id, position:{lat:lat,lng:lng}});
+        await newReg.save();
+        res.sendStatus(201);
+    }catch(error){
+        const device = await DeviceGPS.findByIdAndUpdate(_id, {$push: {position:{lat:lat, lng:lng}}});
+        console.log('update');
+        res.sendStatus(200);
+    }
 });
 
 module.exports = router;

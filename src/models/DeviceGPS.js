@@ -1,12 +1,14 @@
+
 const mongoose = require('mongoose');
 
 const {Schema} = mongoose;
 
+const positionSchema = new Schema({lat: String, lng: String});
 const DeviceGPSSchema = new Schema({
-    name: {type: String, required:true},
-    group_id: {type: String},
-    lat : {type: String, required: true},
-    lng: {type: String, required: true}
+    _id: String,
+    name: String,
+    group_id: String,
+    position: [positionSchema]
 });
 
 module.exports = mongoose.model('DeviceGPS', DeviceGPSSchema);
