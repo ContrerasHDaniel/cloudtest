@@ -23,7 +23,7 @@ app.engine('.hbs',
 app.set('view engine', '.hbs');
 
 // Middlewares
-app.use(express.urlencoded({extended:false}));
+app.use(express.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 app.use(session({
 	secret: 'mysecretapp',
@@ -34,16 +34,11 @@ app.use(session({
 app.use(flash());
 
 // Global vars
-var publicConfig = {
-	key: 'AIzaSyC5Jx2pqC6kJCEmSP_1yoVdGmvr6HZUJSI',
-	stagger_time:       1000, // for elevationPath
-	encode_polylines:   false,
-	secure:             true
-  };
 
 // Routes
 app.use(require('./routes/index'));
 app.use(require('./routes/map'));
+app.use(require('./routes/dgps'));
 
 // Static Files
 app.use(express.static(path.join(__dirname,'/public')));
