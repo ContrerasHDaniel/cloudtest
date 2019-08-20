@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const DeviceGPS = require('../models/DeviceGPS');
+const tools = require('../helpers/tools');
 
-router.post('/map', (req, res) => {
-	var geoparams = {
-		lat: req.body.lat,
-		lng: req.body.lng,
-	  };
-	res.render('map',{geoparams});
+router.post('/map', async (req, res) => {
+	var device = await DeviceGPS.findById('d111');
+	var positions = device.position;
+	var position = tools.getLastPosition(positions);
+
+	res.render('map',{lat:position.lat,lng:position.lng});
 });
 
 module.exports = router;
