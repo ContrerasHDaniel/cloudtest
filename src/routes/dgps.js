@@ -3,9 +3,9 @@ const router = express.Router();
 const DeviceGPS = require('../models/DeviceGPS');
 
 router.post('/devices/dgps', async (req, res) => {    
-    const {id, name, group_id, lat, lng } = req.body;
+    const {_id, name, group_id, lat, lng } = req.body;
     try{
-        const newReg = new DeviceGPS({_id:id, name:name, group_id:group_id, position:{_id: Date.now(), lat:lat,lng:lng}});
+        const newReg = new DeviceGPS({_id:_id, name:name, group_id:group_id, position:{_id: Date.now(), lat:lat,lng:lng}});
         await newReg.save();
         console.log('new');
         res.sendStatus(201);
