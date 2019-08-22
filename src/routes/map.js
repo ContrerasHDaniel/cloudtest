@@ -1,14 +1,35 @@
 const express = require('express');
 const router = express.Router();
 const DeviceGPS = require('../models/DeviceGPS');
-const tools = require('../helpers/tools');
 
 router.post('/map', async (req, res) => {
-	var device = await DeviceGPS.findById('d111');
-	var positions = device.position;
-	var position = tools.getLastPosition(positions);
+	var _id = 'd111';
 
-	res.render('map',{lat:position.lat,lng:position.lng});
+	const data = await DeviceGPS.aggregate([
+		{
+			$match:{
+				_id:_id,
+			}
+		},
+		{
+			$unwind:"$position",
+		},
+		{
+			$sort:{'position._id':-1}
+		},
+		{
+			$limit: 1
+		}
+	]);
+	
+	if(data.length>0){
+		const position = data[0].position;
+		res.render('map',{lat:position.lat,lng:position.lng});
+	}else{
+		console.log('something bad ocurred');
+		res.render('index');
+	}
+
 });
 
 module.exports = router;
