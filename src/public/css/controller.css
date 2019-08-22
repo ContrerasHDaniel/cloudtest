@@ -1,0 +1,51 @@
+body{
+    display: block;
+    margin: 0x;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    background: linear-gradient(to right, gray, gray);
+}
+
+#principal_banner{
+  width: auto;
+  height: auto;
+  margin-left: -8px;
+  margin-right: -8px;
+  margin-top: 0px; 
+  background-color: #FBFBFE;
+  text-align: center;
+}
+
+#menuhor{
+width: auto;
+height: 50px;
+margin-left: -8px;
+margin-right: -8px;
+margin-top: 0px; 
+}
+
+#boton {
+padding: 0px;
+margin: auto;
+text-align: center;
+overflow: hidden;
+background-color: #333;
+}
+
+#boton li {
+display: inline;
+}
+
+#boton li a {
+line-height: 30px;  
+font-family: Arial;
+font-size: 16px;
+text-decoration: none;
+display: inline-block;
+padding: 10px;
+color: #fff;
+font-family: 'Dosis', sans-serif;
+text-transform: uppercase;
+}
