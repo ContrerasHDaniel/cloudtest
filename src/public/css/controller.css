@@ -5,7 +5,7 @@ body{
     margin-right: 0px;
     margin-bottom: 0px;
     margin-left: 0px;
-    background: linear-gradient(to right, gray, gray);
+    /*background: linear-gradient(to right, gray, gray);*/ /*Sobreescribe el color de fondo de main.css*/
 }
 
 #principal_banner{
