@@ -16,4 +16,7 @@ Run 'npm install' in the source directory. This will install all dependencies sp
 To deploy the server locally: 'npm run dev'
 By default it is configured to listen on port 8080.
 
+Execute with 'npm run dev'
+This will enable you to run the server locally on port 8080.
+
 That must be all.

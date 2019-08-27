@@ -10,7 +10,7 @@ const app = express();
 require('./dbconnect');
 
 // Settings
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname,'views'));
 app.engine('.hbs',
 				exhbs({
@@ -39,6 +39,9 @@ app.use(flash());
 app.use(require('./routes/index'));
 app.use(require('./routes/map'));
 app.use(require('./routes/dgps'));
+app.use(require('./routes/update'));
+app.use(require('./routes/tracking'));
+app.use(require('./routes/devices'));
 
 // Static Files
 app.use(express.static(path.join(__dirname,'/public')));

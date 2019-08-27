@@ -10,22 +10,38 @@
 
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/controller.css">
+	<link rel="stylesheet" href="css/style.css">
 
     <title>Sigfox Test</title>
   </head>
 
 <body>
-	<p>Navigation</p>
+	<div id="principal_banner">
+	  <img src="/img/logo.png" class="img-fluid" alt="Responsive image">
+	</div>
+	<div id="menuhor">
+	  <ul id="boton">
+	    <li><a class="active" href="/">Inicio</a></li>
+	    <li><a href="#">Dispositivos</a></li>
+	    <li><a href="#">Contacto</a></li>
+	    <li><a href="#">About</a></li>
+	  </ul>
+	</div>
 	<main class="container">
 		{{{body}}}
 	</main>
-	<!-- FOOTER -->
-  <footer class="page-footer font-small blue">
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2019 Copyright:
-      <a href="http://148.217.94.130">AEM-UAZ CIDTE</a>
-    </div>
-  </footer>
+	<!-- Footer -->
+	<footer class="fixed-bottom">
+
+  		<!-- Copyright -->
+  		<div class="footer-copyright text-center py-3">© 2019 Copyright:
+    		<a href="http://148.217.94.130"> CIDTE </a>
+  		</div>
+  		<!-- Copyright -->
+
+	</footer>
+	<!-- Footer -->
   <script type='text/javascript' src='js/map.js'></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5Jx2pqC6kJCEmSP_1yoVdGmvr6HZUJSI&callback=initMap" async defer></script>
 </body>
