@@ -10,9 +10,11 @@ const positionSchema = new Schema({
 });
 const DeviceGPSSchema = new Schema({
     _id: String,
-    name: String,
-    group_id: String,
-    position: [positionSchema]
+    id_ganado: String,
+    nombre: String,
+    id_zona: String,
+    position: [positionSchema],
+    carga: String
 });
 
 module.exports = mongoose.model('DeviceGPS', DeviceGPSSchema);
