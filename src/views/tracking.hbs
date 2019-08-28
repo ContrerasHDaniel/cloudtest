@@ -1,51 +1,59 @@
-<br>
-		<div id="map">
-		    <input type="hidden" id="lat" value="{{lat}}">
-		    <input type="hidden" id="lng" value="{{lng}}">
+<div class="form-group col-md-4">
+    <label for="zonaSelect"><span class="badge badge-light">Seleccione una zona</span></label>
+    <select id="zonaSelect" class="custom-select">
+		{{#each zonas}}
+    	<option>{{ nombre }}</option>
+		{{/each}}
+    </select>
+</div>
+<div id="map">
+	<input type="hidden" id="lat" value="{{lat}}">
+	<input type="hidden" id="lng" value="{{lng}}">
+	<input type="hidden" id="zonas" value="{{zonas}}">
+</div>
+<div class="jumbotron_map mt-4-map">
+	<h1 class="display-4-map"> Dispositivos</h1>
+	<hr class="my-4-map">
+	<form>
+		<p class="p-map"><B>Zona A</B></p>
+		<div class="form-row">
+			<div class="col">
+				<label >ID</label>
+				<input type="text" class="form-control" placeholder="ID" disabled="true" >
+			</div>
+			<div class="col">
+				<label >Nombre</label>
+				<input type="text" class="form-control" placeholder="" disabled="true">
+			</div>
+			<div class="col">
+				<label >Tipo</label>
+				<input type="text" class="form-control" placeholder="" disabled="true">
+			</div>
+			<div class="col">
+				<label >Estado</label>
+				<input type="text" class="form-control" placeholder="" disabled="true">
+			</div>
 		</div>
-		<div class="jumbotron_map mt-4-map">
-			<h1 class="display-4-map"> Dispositivos</h1>
-			<hr class="my-4-map">
-			<form>
-				<p class="p-map"><B>Zona A</B></p>
-				  <div class="form-row">
-				  	<div class="col">
-				    	<label >ID</label>
-				      	<input type="text" class="form-control" placeholder="ID" disabled="true" >
-				    </div>
-				    <div class="col">
-				    	<label >Nombre</label>
-				      	<input type="text" class="form-control" placeholder="" disabled="true">
-				    </div>
-				    <div class="col">
-				    	<label >Tipo</label>
-				      	<input type="text" class="form-control" placeholder="" disabled="true">
-				    </div>
-				    <div class="col">
-				    	<label >Estado</label>
-				      	<input type="text" class="form-control" placeholder="" disabled="true">
-				    </div>
-				  </div>
-			</form>
-			<form>
-				<p class="p-map"><B>Zona B</B></p>
-				  <div class="form-row">
-				  	<div class="col">
-				    	<label >ID</label>
-				      	<input type="text" class="form-control" placeholder="ID" disabled="true" >
-				    </div>
-				    <div class="col">
-				    	<label >Nombre</label>
-				      	<input type="text" class="form-control" placeholder="" disabled="true">
-				    </div>
-				    <div class="col">
-				    	<label >Tipo</label>
-				      	<input type="text" class="form-control" placeholder="" disabled="true">
-				    </div>
-				    <div class="col">
-				    	<label >Estado</label>
-				      	<input type="text" class="form-control" placeholder="" disabled="true">
-				    </div>
-				  </div>
-			</form>
-		</div>
+	</form>
+	<form>
+		<p class="p-map"><B>Zona B</B></p>
+			<div class="form-row">
+			<div class="col">
+				<label >ID</label>
+				<input type="text" class="form-control" placeholder="ID" disabled="true" >
+			</div>
+			<div class="col">
+				<label >Nombre</label>
+				<input type="text" class="form-control" placeholder="" disabled="true">
+			</div>
+			<div class="col">
+				<label >Tipo</label>
+				<input type="text" class="form-control" placeholder="" disabled="true">
+			</div>
+			<div class="col">
+				<label >Estado</label>
+				<input type="text" class="form-control" placeholder="" disabled="true">
+			</div>
+			</div>
+	</form>
+</div>

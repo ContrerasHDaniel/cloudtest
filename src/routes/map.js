@@ -3,8 +3,8 @@ const router = express.Router();
 const DeviceGPS = require('../models/DeviceGPS');
 
 router.post('/map', async (req, res) => {
-	var _id = 'd111';
-
+	var _id = '2C5D71';
+	console.log('hello')
 	const data = await DeviceGPS.aggregate([
 		{
 			$match:{
@@ -21,7 +21,6 @@ router.post('/map', async (req, res) => {
 			$limit: 1
 		}
 	]);
-	
 	if(data.length>0){
 		const position = data[0].position;
 		res.render('map',{lat:position.lat,lng:position.lng});
