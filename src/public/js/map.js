@@ -2,14 +2,9 @@ var map;
 var lat;
 var lng;
 function initMap(){
-    zonaStr = document.getElementById('zonas').value;
-    console.log(zonas);
-    zonas = zonaStr.split(',');
-    for (var i in zonas){
-      console.log(i);
-    }
     lat = parseFloat(document.getElementById('lat').value);
     lng  = parseFloat(document.getElementById('lng').value);
+    console.log(document.getElementById('zonas').value);
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: lat, lng: lng},        
         zoom: 13
