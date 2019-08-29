@@ -4,7 +4,6 @@ var lng;
 function initMap(){
     lat = parseFloat(document.getElementById('lat').value);
     lng  = parseFloat(document.getElementById('lng').value);
-    console.log(document.getElementById('zonas').value);
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: lat, lng: lng},        
         zoom: 13

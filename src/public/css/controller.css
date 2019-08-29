@@ -1,11 +1,11 @@
-body{
+/*body{
     display: block;
     margin: 0x;
     margin-top: 0px;
     margin-right: 0px;
     margin-bottom: 0px;
     margin-left: 0px;
-    /*background: linear-gradient(to right, gray, gray);*/ /*Sobreescribe el color de fondo de main.css*/
+    background: linear-gradient(to right, gray, gray);*/ /*Sobreescribe el color de fondo de main.css
 }
 
 #principal_banner{
@@ -63,8 +63,7 @@ text-align:center;
 #map{
 height:450px;
 margin-left:0%;
-width:48%;
-float:left
+width:100%;
 }
 
 .jumbotron_map{
@@ -92,3 +91,4 @@ padding: 2rem 1rem;
   margin-top: 0;
   margin-bottom: 0;
 }
+*/

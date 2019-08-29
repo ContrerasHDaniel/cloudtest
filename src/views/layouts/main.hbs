@@ -6,41 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="/css/main.css">
 	<link rel="stylesheet" href="/css/controller.css">
-	<link rel="stylesheet" href="css/style.css">
 
-    <title>Sigfox Test</title>
+    <title>GanTrack</title>
   </head>
 
-<body>
-	<div id="principal_banner">
-	  <img src="/img/logo.png" class="img-fluid" alt="Responsive image">
+<!--Main Navigation-->
+<header>
+	<!-- Banner con logo -->
+	<div class="header-top">
 	</div>
-	<div id="menuhor">
-	  <ul id="boton">
-	    <li><a class="active" href="/">Inicio</a></li>
-	    <li><a href="#">Dispositivos</a></li>
-	    <li><a href="#">Contacto</a></li>
-	    <li><a href="#">About</a></li>
-	  </ul>
-	</div>
+	<!-- Banner con logo -->
+	
+	<!-- Barra de navegacion -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">GanTrack</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="/">Inicio<span class="sr-only">(current)</span></a>
+      			</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Dispositivos</a>
+				</li>
+      			<li class="nav-item">
+        			<a class="nav-link" href="#">Contacto</a>
+      			</li>
+				<li class="nav-item">
+        			<a class="nav-link" href="#">About</a>
+      			</li>
+    		</ul>
+  		</div>
+	</nav>
+	<!-- Barra de navegacion -->
+</header>
+<!--Main Navigation-->
+
+<!-- BODY -->
+<body>	
 	<main class="container">
 		{{{body}}}
 	</main>
-	<!-- Footer -->
-	<footer class="fixed-bottom">
-
-  		<!-- Copyright -->
-  		<div class="footer-copyright text-center py-3">© 2019 Copyright:
-    		<a href="http://cidte.uaz.edu.mx/web/"> CIDTE </a>
-  		</div>
-  		<!-- Copyright -->
-
-	</footer>
-	<!-- Footer -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 </body>
+<!-- BODY -->
+
+<!-- Footer -->
+<footer class="fixed-bottom navbar-dark bg-dark">
+  	<!-- Copyright -->
+  	<div class="footer-copyright text-center py-3">© 2019 Copyright:
+    	<a class="customLink" href="http://cidte.uaz.edu.mx/web/index.php/contacto/"> CIDTE </a>
+  	</div>
+  	<!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+
 </html>

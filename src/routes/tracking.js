@@ -3,9 +3,16 @@ const router = express.Router();
 const DeviceGPS = require('../models/DeviceGPS');
 const ZonaSchema = require('../models/Zona');
 
+
 router.get('/tracking', async (req, res) => {
 	const zonas = await ZonaSchema.find();
-	res.render('tracking', {zonas, lat:zonas[0].lat, lng:zonas[0].lng});
+	res.render('tracking', 
+		{
+			zonas, 
+			lat:zonas[0].lat, 
+			lng:zonas[0].lng
+		}
+	);
 });
 
 //var _id = '2C5D71';
