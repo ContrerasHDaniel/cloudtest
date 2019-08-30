@@ -4,6 +4,7 @@ const exhbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
+const Handlebars = require('handlebars');
 
 // Var inits
 const app = express();
@@ -17,8 +18,27 @@ app.engine('.hbs',
 					defaultLayout: 'main',
 					layoutsDir: path.join(app.get('views'), 'layouts'),
 					partialsDir: path.join(app.get('views'), 'partials'),
-					extname: '.hbs'
-				}));
+					extname: '.hbs',
+					helpers: {
+						getZonas: function(zonas) {
+							var str;
+							zonas.forEach(zona => {
+								str += '<option value="'+zona._id+'">' + zona.nombre + '</option>';
+							});
+							return new Handlebars.SafeString(str);
+						},
+
+						fillDevices: function(devices) {
+							var str;
+							devices.forEach(device =>{
+								str+='<tr><th scope="row">'+device.id_ganado+'</th><th scope="col">'+device.nombre+'</th></tr>'
+							});
+							
+							return new Handlebars.SafeString(str);
+						},
+					}
+				})
+		);
 
 app.set('view engine', '.hbs');
 
