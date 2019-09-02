@@ -17,11 +17,9 @@
               <th scope="col-sm-9">Identificador</th>
               <th scope="col-sm-3">Nombre</th>
             </tr>
-            <div id="tu">
-              
-            </div>
           </thead>
-          <tbody>
+          <tbody id="tabDev">
+            
           </tbody>
         </table>
       </div>
@@ -37,5 +35,10 @@
 
 <script type='text/javascript' src='js/map.js'></script>
 <script type='text/javascript' src='js/getID.js'></script>
-<script type='text/javascript' src='js/handlebars-v4.1.2.js'></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5Jx2pqC6kJCEmSP_1yoVdGmvr6HZUJSI&callback=initMap" async defer></script>
+<script id="tu" type="text/x-handlebars-template">
+  {{#each devices}}
+    <th scope="row">{{id_ganado}}</th>
+    <td>{{nombre}}</td>
+  {{/each}}
+</script>
