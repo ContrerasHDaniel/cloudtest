@@ -25,16 +25,16 @@ function getID(selectedOption){
 
     getJSON('http://localhost:3000/devices/'+selectedOption, function(devices) {
         var out = "";
-        var positions = [];
+        //var positions = [];
         devices.forEach(device => {
             out += "<tr><th scope ='row'>"+device.id_ganado+"</th><td>"+device.nombre+"</td>\n";
-            positions.unshift(device.position.map(function(position){
-                position["id_ganado"] = device.id_ganado;
-                return position}));
+            //positions.unshift(device.position.map(function(position){
+                //position["id_ganado"] = device.id_ganado;
+                //return position}));
         });
 
         document.getElementById('tabDev').innerHTML = out;
-        updateMap(positions);
+        updateMap(devices);
     }, function(status) {
 	    alert('Something went wrong. Status: '+status);
     });
