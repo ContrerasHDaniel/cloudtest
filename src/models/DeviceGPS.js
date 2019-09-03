@@ -1,12 +1,14 @@
 
 const mongoose = require('mongoose');
+require('mongoose-double')(mongoose);
+const SchemaType =mongoose.Schema.Types;
 
 const {Schema} = mongoose;
 
 const positionSchema = new Schema({
     _id: Date, 
-    lat: String, 
-    lng: String
+    lat: SchemaType.Double, 
+    lng: SchemaType.Double
 });
 const DeviceGPSSchema = new Schema({
     _id: String,

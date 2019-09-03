@@ -6,12 +6,10 @@ const fetch = require('node-fetch');
 
 router.post('/devices/dgps', async (req, res) => {    
     const {_id, id_ganado, nombre, id_zona, lat, lng, carga, alerta } = req.body;
-    var b = ".";
-    var positionLat = 2;
-    var positionLng = 4;
-    var outputLat = [lat.slice(0, positionLat), b, lat.slice(positionLat)].join('');
-    var outputLng = [lng.slice(0, positionLng), b, lat.slice(positionLng)].join('');
-    console.log("Lat: "+outputLat+" - Lng: "+outputLng);
+    
+    var latS = parseFloat(getLat(lat));
+    var lngS = parseFloat(getLng(lng));
+
     try{
         const newReg = new DeviceGPS(
             {
@@ -19,7 +17,7 @@ router.post('/devices/dgps', async (req, res) => {
                 id_ganado: id_ganado, 
                 nombre:nombre, 
                 id_zona: id_zona, 
-                position:{_id: Date.now(), lat:outputLat,lng:outputLng}, 
+                position:{_id: Date.now(), lat:latS,lng:lngS}, 
                 carga:carga,
                 alerta: alerta
             }
@@ -58,5 +56,19 @@ router.post('/devices/dgps', async (req, res) => {
         res.sendStatus(500);
     }
 });
+
+function getLat(lat){
+    var b = ".";
+    var positionLat = 2;
+    var outputLat = [lat.slice(0, positionLat), b, lat.slice(positionLat)].join('');
+    return outputLat;
+}
+function getLng(lng){
+    var b = ".";
+    var positionLng = 4;
+    var outputLng = [lng.slice(0, positionLng), b, lng.slice(positionLng)].join('');
+    return outputLng;
+}
+
 
 module.exports = router;
