@@ -5,7 +5,7 @@
         <label for="zonaSelect"><span class="control-label badge badge-light">Monitorear Zona</span></label>
       </div>
       <div>
-        <select id="zonaSelect" class="custom-select" onchange="getID(this.value)">
+        <select id="zonaSelect" class="custom-select" onchange="getID(this.value);">
           <option value="placeholder" selected>Seleccione una zona</option>
           {{getZonas zonas}}   
         </select>
@@ -14,8 +14,9 @@
         <table class="table table-bordered" id="tabDevices">
           <thead>
             <tr>
-              <th scope="col-sm-9">Identificador</th>
+              <th scope="col-sm-6">Identificador</th>
               <th scope="col-sm-3">Nombre</th>
+              <th scope="col-sm-3">Bateria</th>
             </tr>
           </thead>
           <tbody id="tabDev">
@@ -35,4 +36,9 @@
 
 <script type='text/javascript' src='/js/map.js'></script>
 <script type='text/javascript' src='/js/getID.js'></script>
+<script type='text/javascript'>
+  window.setInterval(function(){
+    getID(document.getElementById('zonaSelect').value);
+}, 10000);
+</script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5Jx2pqC6kJCEmSP_1yoVdGmvr6HZUJSI&callback=initMap" async defer></script>

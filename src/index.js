@@ -74,7 +74,7 @@ app.use(require('./routes/subscribe'));
 var options ={
 	setHeaders: function(res, path, stat){
 		res.set('Service-Worker-Allowed', '/'),
-		res.set('Access-Control-Allow-Origin','Origin, X-Requested-With, Content-Type, Accept')
+		res.set('Access-Control-Allow-Origin','Origin, X-Requested-With, Content-Type, Accept, keep-alive')
 	}
 };
 app.use(express.static(__dirname + '/public',options));

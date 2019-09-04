@@ -1,14 +1,33 @@
 if(!!window.EventSource){
-    var source = new EventSource('http://localhost:3000/subscribe/alert');
+    
+    var es = new EventSource('http://localhost:3000/subscribe/alert');
+    es.onmessage = function(ev){
+        if(ev.data == "true"){
+            alert(ev.data);
+        }
+    }
+    
+    /*
+    const listener = function(event){
+        const type = event.type;
+        console.log(event.data+"f");
+        if (type === 'message') {
+            es.close();
+        } 
+    };
 
-    source.addEventListener('message',function (e){
-        console.log(e.alerta);
-        if(e.alerta){
-            document.getElementById('data').innerHTML = "Not ok";
-            console.log('true');
+    es.addEventListener('open',listener);
+    es.addEventListener('message', listener);
+    es.addEventListener('error',listener);
+    es.addEventListener('result',listener);*/
+    /*source.addEventListener('message',function (e){
+        console.log(e.data);
+        if(e.data){
+            document.getElementById('mensaje').innerHTML 
+            = "<span class=\"badge badge-danger\" id=\"data\">OK</span>";
         }else{
-            document.getElementById('data').innerHTML = "Ok";
-            console.log('false');
+            document.getElementById('mensaje').innerHTML 
+            = "<span class=\"badge badge-success\" id=\"data\">Not good</span>";
         }
         
     }, false);
@@ -30,6 +49,7 @@ if(!!window.EventSource){
             id_state.innerHTML = 'Connecting...';
         }
     },false)
+    */
 } else{
     console.log('Your browser does not support SSE');
 }
