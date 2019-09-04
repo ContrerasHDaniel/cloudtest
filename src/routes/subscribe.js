@@ -15,7 +15,7 @@ router.post('/subscribe', (req,res) =>{
 });
 
 router.get('/subscribe/alert', (req, res) =>{
-    console.log(req.headers.alerta=="true");
+    //console.log(req.headers.alerta=="true");
     const sse = SSE(req,res);
     const message = 'false';
     if(alerta){
