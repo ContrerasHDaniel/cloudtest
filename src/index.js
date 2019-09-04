@@ -36,7 +36,7 @@ app.engine('.hbs',
 						fillDevices: function(devices) {
 							var str;
 							devices.forEach(device =>{
-								str+='<tr><th scope="row">'+device.id_ganado+'</th><th scope="col">'+device.nombre+'</th></tr>'
+								str+='<tr><th scope="row">'+device.id_ganado+'</th><td>'+device.nombre+'</td><td>'+device.id_zona+'</td><td class="table-success">Online</td></tr>';
 							});
 							
 							return new Handlebars.SafeString(str);

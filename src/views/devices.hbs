@@ -1,30 +1,15 @@
-<div class="jumbotron mt-4">
-			<h1 class="display-4"> Dispositivos</h1>
-			<hr class="my-4">
-			<form>
-			{{#each devices}}
-			  <div class="form-row">
-			    <div class="col">
-			    	<label >Codigo de barras</label>
-			      	<input type="text" class="form-control" placeholder="" value="{{{devices.id_ganado}}}">
-			    </div>
-			    <div class="col">
-			    	<label >Nombre</label>
-			      	<input type="text" class="form-control" placeholder="" disabled="true">
-			    </div>
-			    <div class="col">
-			    	<label >Zona</label>
-			      	<input type="text" class="form-control" placeholder="" disabled="true">
-			    </div>
-			    <div class="col">
-			    	<label >Tipo</label>
-			      	<input type="text" class="form-control" placeholder="" disabled="true">
-			    </div>
-			    <div class="col">
-			    	<label >Estado</label>
-			      	<input type="text" class="form-control" placeholder="" disabled="true">
-			    </div>
-			  </div>
-			  {{/each}}
-			</form>
-		</div>
+<div>
+	<table class="table table-hover">
+		<thead class="thead-light">
+			<tr>
+				<th scope="col-sm-3">Código de barras</th>
+				<th scope="col-sm-3">Alias</th>
+				<th scope="col-sm-3">Rancho</th>
+				<th scope="col-sm-3">Activo</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{fillDevices devices}}
+		</tbody>
+	</table>
+</div>

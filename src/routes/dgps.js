@@ -15,7 +15,7 @@ router.post('/devices/dgps', async (req, res) => {
                 nombre:nombre, 
                 id_zona: id_zona, 
                 position:{_id: Date.now(), lat:lat,lng:lng}, 
-                carga:carga,
+                carga: 82,
                 alerta: alerta
             }
 

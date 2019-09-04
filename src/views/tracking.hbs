@@ -2,11 +2,11 @@
   <div class="row text-center">
     <div class="col-sm-3">
       <div>
-        <label for="zonaSelect"><span class="control-label badge badge-light">Monitorear Zona</span></label>
+        <label for="zonaSelect"><span class="control-label badge badge-light">Monitorear Rancho</span></label>
       </div>
       <div>
         <select id="zonaSelect" class="custom-select" onchange="getID(this.value);">
-          <option value="placeholder" selected>Seleccione una zona</option>
+          <option value="placeholder" selected>Seleccione un rancho</option>
           {{getZonas zonas}}   
         </select>
       </div>
@@ -15,8 +15,8 @@
           <thead>
             <tr>
               <th scope="col-sm-6">Identificador</th>
-              <th scope="col-sm-3">Nombre</th>
-              <th scope="col-sm-3">Bateria</th>
+              <th scope="col-sm-3">Alias</th>
+              <th scope="col-sm-3">Batería</th>
             </tr>
           </thead>
           <tbody id="tabDev">
