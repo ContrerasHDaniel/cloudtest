@@ -2,10 +2,11 @@
 			<h1 class="display-4"> Dispositivos</h1>
 			<hr class="my-4">
 			<form>
+			{{#each devices}}
 			  <div class="form-row">
 			    <div class="col">
-			    	<label >ID</label>
-			      	<input type="text" class="form-control" placeholder="ID" disabled="true" >
+			    	<label >Codigo de barras</label>
+			      	<input type="text" class="form-control" placeholder="" value="{{{devices.id_ganado}}}">
 			    </div>
 			    <div class="col">
 			    	<label >Nombre</label>
@@ -24,5 +25,6 @@
 			      	<input type="text" class="form-control" placeholder="" disabled="true">
 			    </div>
 			  </div>
+			  {{/each}}
 			</form>
 		</div>

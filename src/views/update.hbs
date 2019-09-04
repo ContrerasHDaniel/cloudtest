@@ -2,27 +2,24 @@
 	<h1 class="display-4">Actualización</h1>
 	<p class="lead"> Actualización de información de dispositivos</p>
 	<hr class="my-4">
-	<form>
+	<form id="submit" action="">
 		<div class="form-row">
 			<div class="form-group col-md-6">
-				<label for="zonaSelect" >Zona</label>
-				<select id="zonaSelect" class="form-control">
+				<label>Zona</label>
+				<select id="zonaSelect" class="form-control" onchange="getDevices(this.value)"> 
 					<option value="0">Selecciona una zona</option>
-					{{#each zonas}}
-					<option value="{{_id}}">{{ nombre }}</option>
-					{{/each}}
+					{{getZonas zonas}}
 				</select>
 			</div>
 			<div class="form-group col-md-6">
 				<label for="idSelect">ID</label>
-				<select id="idSelect" class="form-control">
-                                        <option value="0">Selecciona un dispositivo</option>
-                                        {{#each devices}}
-                                            <option value="{{_id}}">{{ id_ganado }}</option>
-                                        {{/each}}
-                                </select>
+				<select id="idSelect" class="form-control" onchange="getID(this.value)">
+                    <option value="0">Selecciona un dispositivo</option>
+                </select>
 			</div>
 		</div>
 		<button type="submit" class="btn btn-primary">Editar</button>
 	</form>
 </div>
+
+<script type='text/javascript' src='js/getDevices.js'></script>

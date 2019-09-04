@@ -2,8 +2,10 @@ const express = require('express');
 const router = express.Router();
 const DeviceGPS = require('../models/DeviceGPS');
 
-router.get('/devices', (req, res) => {
-	res.render('devices');
+router.get('/devices', async (req, res) => {
+	const devices = await DeviceGPS.find();
+	console.log(typeof devices);
+	res.render('devices',{devices});
 });
 
 router.get('/devices/:id', async (req,res) => {
