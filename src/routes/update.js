@@ -8,7 +8,7 @@ router.get('/update', async (req, res) => {
 	const devices = await DeviceGPS.find();
 	res.render('update', {zonas, devices});
 });
-
+ 
 router.get('/update/edit/:id', async (req,res) => {
 	const reg = await DeviceGPS.findById(req.params.id);
 	const zona = await ZonaSchema.findById(reg.id_zona);

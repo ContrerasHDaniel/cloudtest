@@ -25,7 +25,7 @@ function getDevices(selectedOption){
      xhr.send();
  };
 
- getJSON('http://localhost:3000/devices/'+selectedOption, function(devices) {
+ getJSON('http://148.217.94.130/devices/'+selectedOption, function(devices) {
      var out = "";
      out += "<option >Selecciona un dispositivo</option>";
      devices.forEach(device => {

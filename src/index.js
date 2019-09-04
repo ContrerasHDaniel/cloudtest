@@ -36,7 +36,12 @@ app.engine('.hbs',
 						fillDevices: function(devices) {
 							var str;
 							devices.forEach(device =>{
-								str+='<tr><th scope="row">'+device.id_ganado+'</th><td>'+device.nombre+'</td><td>'+device.id_zona+'</td><td class="table-success">Online</td></tr>';
+								if (device.id_zona == "g11111") {
+									device.nombre_zona = "Rancho B";
+								}else{
+									device.nombre_zona = "Rancho A";
+								}
+								str+='<tr><th scope="row">'+device.id_ganado+'</th><td>'+device.nombre+'</td><td>'+device.nombre_zona+'</td><td class="table-success">Online</td></tr>';
 							});
 							
 							return new Handlebars.SafeString(str);
