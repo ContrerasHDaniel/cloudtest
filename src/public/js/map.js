@@ -2,23 +2,28 @@ var map;
 var lat;
 var lng;
 var markers = [];
+var latlngFocused;
 function initMap(){
     lat = parseFloat(document.getElementById('lat').value);
     lng  = parseFloat(document.getElementById('lng').value);
+    var myLatlng = new google.maps.LatLng(lat,lng);
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: lat, lng: lng},        
+        center: myLatlng,        
         zoom: 13
     });
+    latlngFocused = myLatlng;
+
 }// end function
 
-function updateMap(positions){
+function updateMap(devices){
   deleteMarkers();
-  positions.forEach(position => {
-    position.forEach(coords => {      
-      drawMarker(coords.lat, coords.lng, coords.id_ganado);
-    })
+  devices.forEach((device,idx,devices) => {
+    drawMarker(device.position.lat, device.position.lng, device.id_ganado);
+    if(idx === (devices.length -1)){
+      latlngFocused = new google.maps.LatLng(device.position.lat, device.position.lng);
+    }
   });
-
+  
   showMarkers();
 }
 
@@ -41,6 +46,9 @@ function setMapOnAll(map){
   for (let index = 0; index < markers.length; index++) {
     markers[index].setMap(map);
   }
+  
+  //this.
+  //this.map.setZoom(14);
 }
 
 function clearMarkers(){
@@ -49,6 +57,7 @@ function clearMarkers(){
 
 function showMarkers(){
   setMapOnAll(map);
+  map.panTo(latlngFocused);
 }
 
 function deleteMarkers() {

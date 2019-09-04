@@ -1,5 +1,7 @@
 
 const mongoose = require('mongoose');
+//require('mongoose-double')(mongoose);
+const SchemaType =mongoose.Schema.Types;
 
 const {Schema} = mongoose;
 
@@ -17,5 +19,4 @@ const DeviceGPSSchema = new Schema({
     carga: String,
     alerta: Boolean
 });
-
 module.exports = mongoose.model('DeviceGPS', DeviceGPSSchema);

@@ -11,8 +11,11 @@ const bodyParser = require('body-parser');
 // Var inits
 const app = express();
 require('./dbconnect');
+const publicVapidKey = "BFwZBMBKTHq_h07CVqNCbVBw46_gXhi1crRWvzUM0sCoNtW-foSYnabc7S0PSzLaMY2zgGC6V0Ip7fdrYt2TDmY";
+const privateVapidKey = "fPCiJk-TCouOgiwV9eXQhRew6QLHqWeOunw8ie_Ksj8";
 
 // Settings
+webPush.setVapidDetails('mailto:test@test.com', publicVapidKey, privateVapidKey);
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname,'views'));
 app.engine('.hbs',
@@ -54,6 +57,7 @@ app.use(session({
 }));
 
 app.use(flash());
+app.use(bodyParser.json());
 
 // Global vars
 
@@ -64,9 +68,16 @@ app.use(require('./routes/dgps'));
 app.use(require('./routes/update'));
 app.use(require('./routes/tracking'));
 app.use(require('./routes/devices'));
+app.use(require('./routes/subscribe'));
 
 // Static Files
-app.use(express.static(path.join(__dirname,'/public')));
+var options ={
+	setHeaders: function(res, path, stat){
+		res.set('Service-Worker-Allowed', '/'),
+		res.set('Access-Control-Allow-Origin','Origin, X-Requested-With, Content-Type, Accept, keep-alive')
+	}
+};
+app.use(express.static(__dirname + '/public',options));
 
 // Server init
 app.listen(app.get('port'), () => {
