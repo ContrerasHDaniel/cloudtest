@@ -1,6 +1,5 @@
 
 const mongoose = require('mongoose');
-//require('mongoose-double')(mongoose);
 const SchemaType =mongoose.Schema.Types;
 
 const {Schema} = mongoose;
