@@ -20,7 +20,7 @@ router.get('/update', async (req, res) => {
 });
  
 /* Ruta para la página de edición de un dispositivo dado */
-/* OPCIÓN: Exportar los datos desde HTML */
+/* OPCIÓN: Recibir los datos en objeto, sin hacer consulta de la BD*/
 router.get('/update/edit/:id', async (req,res) => {
 	const reg = await DeviceGPS.findById(req.params.id);
 	const zona = await ZonaSchema.findById(reg.id_zona);
