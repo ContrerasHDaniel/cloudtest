@@ -65,11 +65,10 @@ app.use(flash());
 app.use(bodyParser.json());
 
 // Global vars
+alerta = false;
 
 // Routes
 app.use(require('./routes/index'));
-app.use(require('./routes/map'));
-app.use(require('./routes/dgps'));
 app.use(require('./routes/update'));
 app.use(require('./routes/tracking'));
 app.use(require('./routes/devices'));

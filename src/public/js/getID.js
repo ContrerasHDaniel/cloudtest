@@ -23,7 +23,7 @@ function getID(selectedOption){
         xhr.send();
     };
 
-    getJSON('http://148.217.94.130/devices/'+selectedOption, function(devices) {
+    getJSON('http://localhost:3000/devices/'+selectedOption, function(devices) {
         var out = "";
         //var positions = [];
         devices.forEach(device => {
@@ -40,4 +40,3 @@ function getID(selectedOption){
     });
     
 }
-
