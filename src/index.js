@@ -5,8 +5,7 @@ const Handlebars = require('handlebars');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
-const webPush = require('web-push');
-const bodyParser = require('body-parser');
+require('dotenv').config();
 
 // Var inits
 const app = express();

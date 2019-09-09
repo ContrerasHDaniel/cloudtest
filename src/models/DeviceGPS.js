@@ -1,6 +1,5 @@
 
 const mongoose = require('mongoose');
-const SchemaType =mongoose.Schema.Types;
 
 const {Schema} = mongoose;
 

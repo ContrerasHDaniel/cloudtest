@@ -30,4 +30,5 @@ router.get('/subscribe/alert', (req, res) =>{
         console.log('Bye client')
     });
 });
+
 module.exports = router;
