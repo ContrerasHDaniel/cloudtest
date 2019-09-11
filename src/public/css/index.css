@@ -1,0 +1,11 @@
+#btnContainer .container{
+    margin-top: 120px;
+    max-width: 1040px;
+}
+
+.img-thumbnail{
+    height: 205px;
+    width: 215px;
+    background-color: transparent;
+    background: transparent;
+}

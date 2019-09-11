@@ -10,11 +10,10 @@ require('dotenv').config();
 // Var inits
 const app = express();
 require('./dbconnect');
-const publicVapidKey = "BFwZBMBKTHq_h07CVqNCbVBw46_gXhi1crRWvzUM0sCoNtW-foSYnabc7S0PSzLaMY2zgGC6V0Ip7fdrYt2TDmY";
-const privateVapidKey = "fPCiJk-TCouOgiwV9eXQhRew6QLHqWeOunw8ie_Ksj8";
+//const publicVapidKey = "BFwZBMBKTHq_h07CVqNCbVBw46_gXhi1crRWvzUM0sCoNtW-foSYnabc7S0PSzLaMY2zgGC6V0Ip7fdrYt2TDmY";
+//const privateVapidKey = "fPCiJk-TCouOgiwV9eXQhRew6QLHqWeOunw8ie_Ksj8";
 
 // Settings
-webPush.setVapidDetails('mailto:test@test.com', publicVapidKey, privateVapidKey);
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname,'views'));
 app.engine('.hbs',
@@ -61,7 +60,6 @@ app.use(session({
 }));
 
 app.use(flash());
-app.use(bodyParser.json());
 
 // Global vars
 alerta = false;
