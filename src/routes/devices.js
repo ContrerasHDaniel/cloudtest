@@ -91,7 +91,7 @@ router.post('/devices/dgps', async (req, res) => {
         res.sendStatus(500);	// Status 500 (error interno del server)
     }finally{			// Siempre se verifica el estado de alerta de un dispositivo
         if(alerts===true){
-            global.alerta = true;	// Se cambia el valor de la alerta a true si el dispositivo llega con la alerta activada
+            io.emit('alert fired', {id_ganado: id_ganado, id_zona: id_zona});
         }
     }
 
