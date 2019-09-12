@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 });
 
 /* Ruta index */
-router.post('/index', (req,res) => {
+router.get('/index', (req,res) => {
 	// Se dibuja la página index.hbs
 	res.render('index');
 });

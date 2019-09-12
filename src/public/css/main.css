@@ -33,3 +33,7 @@ footer{
     background-color: #333;
     color: antiquewhite;
 }
+
+#btn-alert{
+    border-radius: 50%;
+}
