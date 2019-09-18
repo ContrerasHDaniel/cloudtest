@@ -4,12 +4,14 @@ const exhbs = require('express-handlebars');
 const Handlebars = require('handlebars');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const passport = require('passport');
 const flash = require('connect-flash');
 
 
 // Var inits
 const app = express();
 require('./dbconnect');
+require('./config/passport');
 
 //const publicVapidKey = "BFwZBMBKTHq_h07CVqNCbVBw46_gXhi1crRWvzUM0sCoNtW-foSYnabc7S0PSzLaMY2zgGC6V0Ip7fdrYt2TDmY";
 //const privateVapidKey = "fPCiJk-TCouOgiwV9eXQhRew6QLHqWeOunw8ie_Ksj8";
@@ -59,14 +61,23 @@ app.use(session({
 	resave: true,
 	saveUninitialized: true
 }));
-
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
+
+// Global variables
+app.use((req, res, next) => {
+	res.locals.error = req.flash('error');
+	res.locals.user = req.user || null;
+	next();
+});
 
 // Routes
 app.use(require('./routes/index'));
 app.use(require('./routes/update'));
 app.use(require('./routes/tracking'));
 app.use(require('./routes/devices'));
+app.use(require('./routes/users'));
 
 // Static Files
 var options ={

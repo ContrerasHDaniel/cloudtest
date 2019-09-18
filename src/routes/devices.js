@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const DeviceGPS = require('../models/DeviceGPS');
+const { isAuthenticated } = require('../helpers/auth');
 
 /*Ruta para la página de listado de todos los dispositivos registrados (PENDIENTE: para un usuario dado)*/ 
-router.get('/devices', async (req, res) => {
+router.get('/devices', isAuthenticated, async (req, res) => {
 	// Consulta la base de datos de manera asíncrona y obtiene todos los dispositivos registrados
 	const devices = await DeviceGPS.find().exec(function(err, devices){
 		// Dibuja la página devices.hbs en el body de main.hbs y pasa un objeto 'devices' que puede utilizarse con handlebars dentro del html.
@@ -19,7 +20,7 @@ router.get('/devices', async (req, res) => {
 });
 
 /* Ruta para obtener los dispositivos asociados a un id de zona recibido.*/
-router.get('/devices/:id', async (req,res) => {
+router.get('/devices/:id', isAuthenticated, async (req,res) => {
 	// Consulta la base de datos de manera asíncrona donde el id_zona registrado dentro del documento de dispositivo
 	// coincida con el id recibido por la ruta.
 	const devices = await DeviceGPS.aggregate([

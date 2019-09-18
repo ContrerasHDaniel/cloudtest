@@ -23,7 +23,7 @@
 	
 	<!-- Barra de navegacion -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">GanTrack</a>
+		<a class="navbar-brand" href="/index">GanTrack</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -37,13 +37,32 @@
 					<a class="nav-link" href="/devices">Etiquetas</a>
 				</li>
       			<li class="nav-item">
-        			<a class="nav-link" href="#">Contacto</a>
+        			<a class="nav-link" href="http://cidte.uaz.edu.mx/web/index.php/contacto/">Contacto</a>
       			</li>
+				{{#if user}}
 				<li class="nav-item" id="alert">
         			<button type="button" class="btn btn-success" id="btn-alert">OK</button>
       			</li>
+				{{/if}}
     		</ul>
   		</div>
+		{{#if user}}
+		<div class="navbar-collapse collapse">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active">
+					<a class="nav-link badge badge-pill badge-secondary" href="/users/logout">Logout</a>
+				</li>
+			</ul>
+		</div>
+		{{else}}
+		<div class="navbar-collapse collapse">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active">
+					<a class="nav-link badge badge-pill badge-info" href="/users/signin">Login</a>
+				</li>
+			</ul>
+		</div>
+		{{/if}}
 	</nav>
 	<!-- Barra de navegacion -->
 </header>

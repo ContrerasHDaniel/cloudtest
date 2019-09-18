@@ -37,3 +37,9 @@ footer{
 #btn-alert{
     border-radius: 50%;
 }
+
+.customLink, .customLink:hover{
+    color: #83a4d4;
+    font-style: oblique;
+    text-decoration: none;
+  }

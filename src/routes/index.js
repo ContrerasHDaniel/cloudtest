@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { isAuthenticated } = require('../helpers/auth');
 
 /* Ruta raíz del servidor */
 router.get('/', (req, res) => {
@@ -8,7 +9,7 @@ router.get('/', (req, res) => {
 });
 
 /* Ruta index */
-router.get('/index', (req,res) => {
+router.get('/index', isAuthenticated, (req,res) => {
 	// Se dibuja la página index.hbs
 	res.render('index');
 });
