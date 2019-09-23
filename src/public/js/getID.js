@@ -3,7 +3,7 @@
  * @param {HTMLSelectElement.value} selectedOption 
  */
 function getID(selectedOption){
-    getJSON('http://localhost:3000/devices/'+selectedOption, function(devices) {
+    getJSON('http://148.217.94.130/devices/'+selectedOption, function(devices) {
         // SuccessHandler
         var out = "";
         devices.forEach(device => { // Se crea una nueva fila por cada dispositivo encontrado.
@@ -45,6 +45,7 @@ function getJSON(url, successHandler, errorHandler){
                 data = xhr.response;
                 successHandler && successHandler(data);
             } else { // De lo contrario lo pasa al errorHandler
+		console.log(data);
                 errorHandler && errorHandler(data);
             } 
         }

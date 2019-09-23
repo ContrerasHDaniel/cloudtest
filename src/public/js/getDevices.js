@@ -6,7 +6,7 @@ function getID(selectedOption){
  * Get devices associated to a zone (selectedOption) y rellena el select 'idSelect' de la página.
  * 
  * @param {HTMLSelectElement.value} selectedOption 
- */
+*/
 function getDevices(selectedOption){
 
     getJSON('http://148.217.94.130/devices/'+selectedOption, function(devices) {
@@ -22,7 +22,7 @@ function getDevices(selectedOption){
         document.getElementById('idSelect').removeAttribute('disabled');        // Activa el select
         },function(status) {
             // ErrorHandler
-            alert('Something went wrong. Status: ' + status);
+            alert('Something went wrong. Status: ' + devices);
     });
 }
 
