@@ -16,14 +16,12 @@
 
 <!--Main Navigation-->
 <header>
-	<!-- Banner con logo -->
-	<div class="header-top">
-	</div>
-	<!-- Banner con logo -->
-	
 	<!-- Barra de navegacion -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="/index">GanTrack</a>
+	<nav class="navbar navbar-expand-lg navbar-dark topbar idx-9500">
+		{{#if user}}
+		<a class="navbar-brand" href="/index">
+			<img src="/img/logo_banner.png" class="img-brand">
+		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -36,32 +34,71 @@
 				<li class="nav-item">
 					<a class="nav-link" href="/devices">Etiquetas</a>
 				</li>
-      			<li class="nav-item">
-        			<a class="nav-link" href="http://cidte.uaz.edu.mx/web/index.php/contacto/">Contacto</a>
-      			</li>
-				{{#if user}}
-				<li class="nav-item" id="alert">
-        			<button type="button" class="btn btn-success" id="btn-alert">OK</button>
-      			</li>
-				{{/if}}
+				<li class="nav-item">
+					<a class="nav-link" href="/update">Registros</a>
+				</li>
     		</ul>
   		</div>
-		{{#if user}}
 		<div class="navbar-collapse collapse">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active">
-					<a class="nav-link badge badge-pill badge-secondary" href="/users/logout">Logout</a>
+				<li class="nav-item dropdown no-arrow mx-1">
+        			<a id="alertsDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<i class="fas fa-bell fa-fw"></i>
+						<span class="badge badge-danger badge-counter" id="alert"></span>
+					</a>
+					<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelled-by="alertsDropdown">
+						<h6 class="dropdown-header">Centro de Alertas</h6>
+						<a class="dropdown-item d-flex align-items-center" href="#">
+							<div class="mr-3" id="alert-msg">
+								<div class="small text-gray-500">No hay alertas por el momento</div>
+							</div>
+						</a>
+					</div>
+      			</li>
+				<li class="nav-item dropdown no-arrow">
+					<a id="userDrop" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<span class="mr-2 d-lg-inline text-gray-500 small">Otorrinolaringologa</span>
+						<img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+					</a>
+					<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                		<a class="dropdown-item" href="#">
+                  			<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  			Perfil
+                		</a>
+                		<a class="dropdown-item" href="#">
+                  			<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  			Configuración
+                		</a>
+                		<div class="dropdown-divider"></div>
+                		<a class="dropdown-item" href="/users/logout" data-toggle="modal" data-target="#logoutModal">
+                  			<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  			Cerrar sesión
+                		</a>
+              		</div>
 				</li>
 			</ul>
 		</div>
 		{{else}}
-		<div class="navbar-collapse collapse">
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active">
-					<a class="nav-link badge badge-pill badge-info" href="/users/signin">Login</a>
-				</li>
-			</ul>
-		</div>
+		<div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0">
+        	<ul class="navbar-nav ml-auto text-center">
+            	<li class="nav-item active">
+                	<a class="nav-link" href="/index">Inicio</a>
+            	</li>
+        	</ul>
+    	</div>
+    	<div class="mx-auto my-2 order-0 order-md-1 position-relative">
+            <img src="/img/head_logo.png" class="rounded-circle center-button">
+        	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            	<span class="navbar-toggler-icon"></span>
+        	</button>
+    	</div>
+    	<div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2">
+        	<ul class="navbar-nav mr-auto text-center">
+            	<li class="nav-item">
+                	<a class="nav-link" href="http://cidte.uaz.edu.mx/web/index.php/contacto/">Contacto</a>
+            	</li>
+        	</ul>
+    	</div>
 		{{/if}}
 	</nav>
 	<!-- Barra de navegacion -->
@@ -74,24 +111,42 @@
 		{{{body}}}
 	</main>
 
+	 <!-- Logout Modal-->
+  <div class="modal fade idx-10000" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¿Desea salir?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Seleccion "Cerrar sesión" abajo si desea salir ahora.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <a class="btn btn-primary" href="/users/logout">Cerrar Sesión</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+	<!-- Footer -->
+	<footer class="page-footer font-small blue">
+
+  	<!-- Copyright -->
+  	<div class="footer-copyright text-center py-3">© 2019 Copyright:
+	    <a href="http://cidte.uaz.edu.mx/web/index.php/contacto/">CIDTE</a>
+  	</div>
+  	<!-- Copyright -->
+
+	</footer>
+	<!-- Footer -->
+
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 <script src="/js/client.js"></script>
-
 </body>
 <!-- BODY -->
-
-<!-- Footer -->
-<footer class="fixed-bottom navbar-dark bg-dark">
-  	<!-- Copyright -->
-  	<div class="footer-copyright text-center py-3">© 2019 Copyright:
-    	<a class="customLink" href="http://cidte.uaz.edu.mx/web/index.php/contacto/"> CIDTE </a>
-  	</div>
-  	<!-- Copyright -->
-</footer>
-<!-- Footer -->
-
-
 </html>

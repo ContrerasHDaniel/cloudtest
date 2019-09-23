@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const DeviceGPS = require('../models/DeviceGPS');
+const Zona = require('../models/Zona');
 const { isAuthenticated } = require('../helpers/auth');
 
 /*Ruta para la página de listado de todos los dispositivos registrados (PENDIENTE: para un usuario dado)*/ 
@@ -16,7 +17,6 @@ router.get('/devices', isAuthenticated, async (req, res) => {
 			res.render('devices');
 		}
 	});
-	
 });
 
 /* Ruta para obtener los dispositivos asociados a un id de zona recibido.*/
@@ -92,7 +92,8 @@ router.post('/devices/dgps', async (req, res) => {
         res.sendStatus(500);	// Status 500 (error interno del server)
     }finally{			// Siempre se verifica el estado de alerta de un dispositivo
         if(alerts===true){
-            io.emit('alert fired', {id_ganado: id_ganado, id_zona: id_zona});
+			const zona = await Zona.findById(id_zona);
+            io.emit('alert fired', {id_ganado: id_ganado, zona: zona.nombre});
         }
     }
 

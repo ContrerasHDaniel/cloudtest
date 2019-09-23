@@ -8,31 +8,33 @@
     </button>
 </div>
 {{/if}}
-<div id="login">
-    <div class="container">
-        <div id="login-row" class="row justify-content-center align-items-center">
-            <div id="login-column" class="col-md-6">
-                <div id="login-box" class="col-md-12">
-                    <form id="login-form" class="form" action="/users/signin" method="POST">
-                        <h3 class="text-center text-dark">Iniciar sesión</h3>
-                        <div class="form-group">
-                            <label for="email" class="text-muted">Email:</label><br>
-                            <input type="email" name="email" id="email" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="text-muted">Contraseña:</label><br>
-                            <input type="password" name="password" id="password" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="remember-me" class="text-muted"><span>Recordarme</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
-                            <input type="submit" name="submit" class="btn btn-dark btn-md" value="Entrar">
-                        </div>
-                        <div id="register-link" class="text-right">
-                            <a href="/users/signup" class="text-muted">Registrarse</a>
-                        </div>
-                    </form>
-                </div>
-             </div>
+
+{{#if user}}
+<!-- redirect to index -->
+{{else}}
+<div class="container container-login">
+    <div class="wrap-login">
+        <div class="login-form-title">
+            <span class="login-form-title-1">Sign In</span>
         </div>
+        <form id="login-form" class="login-form validate-form" action="/users/signin" method="POST">
+            <div class="wrap-input validate-input m-b-26" data-validate="Se requiere el email">
+                <span class="label-input">Email:</span>
+                <input class="input-form" type="text" name="email" placeholder="Ingresa tu email">
+                <span class="focus-input"></span>
+            </div>
+            <div class="wrap-input validate-input m-b-18" data-validate="Se requiere el email">
+                <span class="label-input">Contraseña:</span>
+                <input class="input-form" type="password" name="password" placeholder="Ingresa tu contraseña">
+                <span class="focus-input"></span>
+            </div>
+            <div class="flex-sb-m w-full p-b-30">
+                <a class="txt1" href="#">Recuperar contraseña</a>
+            </div>
+            <div class="container-from-login-form-button">
+                <button class="login-form-button">Entrar</button>
+            </div>
+        </form>
     </div>
 </div>
+{{/if}}

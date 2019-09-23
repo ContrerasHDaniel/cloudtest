@@ -29,20 +29,28 @@ app.engine('.hbs',
 						getZonas: function(zonas) {
 							var str;
 							zonas.forEach(zona => {
-								str += '<option value="'+zona._id+'">' + zona.nombre + '</option>';
+								str += '<li data-value="'+zona._id+'"><span>' 
+								+ zona.nombre + '</span>' 
+								+ '</li>';
 							});
 							return new Handlebars.SafeString(str);
 						},
 
 						fillDevices: function(devices) {
-							var str;
-							devices.forEach(device =>{
-								if (device.id_zona == "g11111") {
-									device.nombre_zona = "Rancho B";
+							var str ="";
+							devices.forEach(async device =>{
+								str+='<tr id=\"'+ device.id_ganado +'\"><td>'
+								+device.id_ganado+'</td><td>'
+								+device.nombre+'</td><td>'
+								+device.id_zona+'</td>';
+
+								if (device.alerta) {
+									str+= '</td><td id = \"status\" class="table-danger">Desconectado</td></tr>';
 								}else{
-									device.nombre_zona = "Rancho A";
+									str+= '</td><td id = \"status\" class="table-success">En línea</td></tr>';
 								}
-								str+='<tr><th scope="row">'+device.id_ganado+'</th><td>'+device.nombre+'</td><td>'+device.nombre_zona+'</td><td class="table-success">Online</td></tr>';
+								
+								
 							});
 							
 							return new Handlebars.SafeString(str);

@@ -1,21 +1,28 @@
 $(document).ready(function(){
     var socket = io();
-    /*$("#addComment").click(function(event){
-        var userName = $("#name").val();
-        var userComment = $("#comment").val();
-        if(userName === "" || userComment === "") {
-            alert("Please fill the form.");
-            return;
+    socket.on('alert fired', function(msg){
+        var d = new Date();
+        document.getElementById('alert').innerText = "1";
+        document.getElementById('alert-msg').innerHTML 
+        = '<div class=\"icon-circle bg-warning\">'
+        + '<i class=\"fas fa-exclamation-triangle text-white\"></i>'          
+        + '</div><div class=\"small text-gray-500\">' + d.toString()
+        + '</div> ¡Alerta! El animal ' + msg.id_ganado + ' ha salido del rancho ' + msg.zona;
+
+        if (document.getElementById(msg.id_ganado)) {
+            updateTable(msg.id_ganado);
         }
-        
-    });*/
-    //socket.emit('comment added',{user : userName, comment : userComment});
-    socket.on('alert fired',function(msg){
-        document.getElementById('alert').innerHTML ="<button type=\"button\" class=\"btn btn-danger\" id=\"btn-alert\">Alerta</button>";
-        notifyMe(msg.id_ganado, msg.id_zona);
+        notifyMe(msg.id_ganado, msg.zona);
     });
 });
-function notifyMe(id_ganado, id_zona) {
+
+function updateTable(id_ganado){
+    var id = "#"+id_ganado;
+    $(id).find('#status').addClass('table-danger').removeClass('table-success');
+    $(id).find('#status').html('Desconectado');
+}
+
+function notifyMe(id_ganado, zona) {
     // Let's check if the browser supports notifications
     if (!("Notification" in window)) {
         alert("This browser does not support desktop notification");
@@ -27,7 +34,7 @@ function notifyMe(id_ganado, id_zona) {
             body: "El animal "+ id_ganado + " se desconectó",
             dir : "ltr"
         };
-        var notification = new Notification("Alerta en la zona: " + id_zona, options);
+        var notification = new Notification("Alerta en la zona: " + zona, options);
     }
   
     // Otherwise, we need to ask the user for permission
@@ -49,6 +56,4 @@ function notifyMe(id_ganado, id_zona) {
         }
         });
     }
-// At last, if the user already denied any notification, and you
-// want to be respectful there is no need to bother them any more.
 }

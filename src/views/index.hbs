@@ -1,26 +1,98 @@
-<!-- Index CSS -->
+<!-- Index CSS 
 <link rel="stylesheet" href="/css/index.css">
+-->
 
-<div id = "btnContainer">
-	<div class="container">
-		<div class="row justify-content-center align-items-center">
-    		<div class="col-lg-4">
-				<a href="/tracking">
-      				<img src="/img/btnMonitor.png" class="img-thumbnail rounded border-0">
-				</a>
-    		</div>
-  		</div>
-  		<div class="row justify-content-center align-items-center">
-			<div class="col-lg-4">
-    			<a href="/update">
-					<img src="/img/btnReg.png" class="img-thumbnail rounded border-0">
-				</a>
-    		</div>
-    		<div class="col-lg-4">
-				<a href="/devices">
-      				<img src="/img/btnDispo.png" class="img-thumbnail rounded border-0" href="http://www.google.com">
-				</a>
-    		</div>
-  		</div>
+<div id="wrapper" class="container container-full">
+	<div id="content-wrapper" class="d-flex flex-column">
+		<div class="container-fluid">
+			<div class="row">				
+				<div class="col-xl-5 col-md-6 mb-4">
+					<div class="card border-left-primary shadow h100 py-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+									Seleccione un rancho
+								</div>
+							</div>
+							<div class="row no-gutters align-items-center idx-9500">
+								<div class="col mr-2">
+									<div class="h5 mb-0 font-weight-bold text-gray-800">
+  										<div class="dropdown">
+    										<span class="selLabel">Rancho</span>
+    										<input type="hidden" name="cd-dropdown">
+    										<ul class="dropdown-list">
+      											{{getZonas zonas}}
+    										</ul>
+  										</div>	
+									</div>
+								</div>
+							</div>
+							<div class="row no-gutters align-items-center idx-9000">
+								<table class="responsivetable mt-4">
+									<thead>
+										<tr>
+    										<th data-th="Driver details"><h1>Código</h1></th>
+    										<th><h1>Alias</h1></th>
+    										<th><h1>Batería</h1></th>
+  										</tr>
+									</thead>
+									<tbody id="tabDev">
+										
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-7 col-lg-7">
+					<div class="card shadow mb-4">
+						<div class="card-header py-3 d-flex flex-row align-itmes-center justify-content-between">
+							<h6 id="map-title" class="m-0 font-weight-bold text-primary">Rancho:</h6>
+						</div>
+						<div class="card-body">
+							<div class="map-area">
+								<div id="map">
+	      							<input type="hidden" id="lat" value="{{lat}}">
+	      							<input type="hidden" id="lng" value="{{lng}}">
+      							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
+
+<script type='text/javascript' src='/js/map.js'></script>
+<script type='text/javascript' src='/js/getID.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type='text/javascript'>
+  
+</script>
+<script>
+	$(document).ready(function() {
+		var center;
+		var title;
+  		$(".selLabel").click(function () {
+    		$('.dropdown').toggleClass('active');
+  		});
+  
+  		$(".dropdown-list li").click(function() {
+			center = $(this).attr('data-value');
+			document.getElementById('map-title').innerText = "Rancho: " + $(this).text();
+			getID(center);
+    		$('.selLabel').text($(this).text());
+    		$('.dropdown').removeClass('active');
+    		$('.selected-item p span').text($('.selLabel').text());
+			clearInterval(center);
+			setInterval(myTimer(center), 60000);
+  		});
+	});
+</script>
+<script>
+	function myTimer(center){
+		getID(center);
+	}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5Jx2pqC6kJCEmSP_1yoVdGmvr6HZUJSI&callback=initMap" async defer></script>
