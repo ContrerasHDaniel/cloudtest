@@ -36,13 +36,19 @@ app.engine('.hbs',
 							return new Handlebars.SafeString(str);
 						},
 
-						fillDevices: function(devices) {
+						fillDevices: function(devices,zonas) {
 							var str ="";
-							devices.forEach(async device =>{
-								str+='<tr id=\"'+ device.id_ganado +'\"><td>'
-								+device.id_ganado+'</td><td>'
-								+device.nombre+'</td><td>'
-								+device.id_zona+'</td>';
+							var nameZona = "";
+							devices.forEach(device =>{
+								zonas.forEach(zona => {
+									if(device.id_zona === zona._id){
+										nameZona = zona.nombre;
+									}
+								});
+								str+='<tr data-toggle=\"modal\" id=\"'+ device._id +'\" data-target=\"#updateModal\"><td>'
+								+device.id_ganado+'</td><td id=\"nombre\">'
+								+device.nombre+'</td><td id=\"id_zona\">'
+								+nameZona+'</td>';
 
 								if (device.alerta) {
 									str+= '</td><td id = \"status\" class="table-danger">Desconectado</td></tr>';

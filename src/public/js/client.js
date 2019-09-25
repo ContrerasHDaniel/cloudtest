@@ -9,15 +9,15 @@ $(document).ready(function(){
         + '</div><div class=\"small text-gray-500\">' + d.toString()
         + '</div> ¡Alerta! El animal ' + msg.id_ganado + ' ha salido del rancho ' + msg.zona;
 
-        if (document.getElementById(msg.id_ganado)) {
-            updateTable(msg.id_ganado);
+        if (document.getElementById(msg._id)) {
+            updateTable(msg._id);
         }
         notifyMe(msg.id_ganado, msg.zona);
     });
 });
 
-function updateTable(id_ganado){
-    var id = "#"+id_ganado;
+function updateTable(_id){
+    var id = "#"+_id;
     $(id).find('#status').addClass('table-danger').removeClass('table-success');
     $(id).find('#status').html('Desconectado');
 }

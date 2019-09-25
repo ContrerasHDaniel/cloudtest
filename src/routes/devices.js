@@ -8,8 +8,16 @@ const { isAuthenticated } = require('../helpers/auth');
 router.get('/devices', isAuthenticated, async (req, res) => {
 	// Consulta la base de datos de manera asíncrona y obtiene todos los dispositivos registrados
 	const devices = await DeviceGPS.find().exec(function(err, devices){
+		const zonas = Zona.find().exec(function(err, zonas){
+			if (err) {
+				console.log(err);
+				res.render('devices');
+			}else{
+				res.render('devices',{devices, zonas});
+			}
+		});
 		// Dibuja la página devices.hbs en el body de main.hbs y pasa un objeto 'devices' que puede utilizarse con handlebars dentro del html.
-		res.render('devices',{devices});
+		//res.render('devices',{devices});
 		// De no ser así, se dibuja la página sin pasar los datos.
 		// Por consecuencia no se mostrarán datos.
 		if (err) {
@@ -38,6 +46,17 @@ router.get('/devices/:id', isAuthenticated, async (req,res) => {
 			res.json(err);
 		}else{					// Envia un json con el objeto json formateado como respuesta
 			res.json(devices);
+		}
+	});
+});
+
+/* Ruta para obtener los detalles de un solo dispositivo */
+router.post('/devices/:id', isAuthenticated, async (req,res) => {
+	const device = await DeviceGPS.findById(req.params.id).exec(function(err, device){
+		if (err) {
+			res.json(err);
+		} else {
+			res.json(device);
 		}
 	});
 });
@@ -93,7 +112,7 @@ router.post('/devices/dgps', async (req, res) => {
     }finally{			// Siempre se verifica el estado de alerta de un dispositivo
         if(alerts===true){
 			const zona = await Zona.findById(id_zona);
-            io.emit('alert fired', {id_ganado: id_ganado, zona: zona.nombre});
+            io.emit('alert fired', {_id: _id, id_ganado: id_ganado, zona: zona.nombre});
         }
     }
 

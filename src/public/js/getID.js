@@ -3,7 +3,7 @@
  * @param {HTMLSelectElement.value} selectedOption 
  */
 function getID(selectedOption){
-    getJSON('http://148.217.94.130/devices/'+selectedOption, function(devices) {
+    getJSON('http://localhost:3000/devices/'+selectedOption, function(devices) {
         // SuccessHandler
         var out = "";
         
