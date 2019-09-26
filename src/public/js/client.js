@@ -1,6 +1,7 @@
 $(document).ready(function(){
     var socket = io();
     socket.on('alert fired', function(msg){
+        console.log('here');
         var d = new Date();
         document.getElementById('alert').innerText = "1";
         document.getElementById('alert-msg').innerHTML 

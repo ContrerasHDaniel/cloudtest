@@ -72,8 +72,8 @@ app.use(express.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 app.use(session({
 	secret: 'mysecretapp',
-	resave: true,
-	saveUninitialized: true
+	saveUninitialized: true,
+	resave: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
