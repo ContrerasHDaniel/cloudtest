@@ -3,6 +3,7 @@ const router = express.Router();
 const ZonaSchema = require('../models/Zona');
 const DeviceGPS = require('../models/DeviceGPS');
 const Zona = require('../models/Zona');
+var idZ = "";
 
 /* Ruta para registrar/actualizar un dispositivo GPS */
 router.post('/devices/dgps', async (req, res) => {    				
@@ -14,7 +15,7 @@ router.post('/devices/dgps', async (req, res) => {
 	}
 	
 	// Bandera para obtener si un dispositivo disparó una alerta.
-	alerts = alerta == "true";
+	alerts = alerta == 1 || alerta == "true";
 	
 	try{
 		
@@ -42,7 +43,8 @@ router.post('/devices/dgps', async (req, res) => {
                     },
                     carga: carga,										// Se actualiza la carga de la batería
                     alerta:alerta										// Se actualiza el estado de alerta
-				});
+                });
+                idZ = device.id_zona;
                 res.sendStatus(200);									// Status 200 (actualizado)
             }else{
                 res.sendStatus(201);									// Status 201 (creado)
@@ -53,7 +55,7 @@ router.post('/devices/dgps', async (req, res) => {
         res.sendStatus(500);	// Status 500 (error interno del server)
     }finally{			// Siempre se verifica el estado de alerta de un dispositivo
         if(alerts===true){
-			const zona = await Zona.findById(id_zona);
+			const zona = await Zona.findById(idZ);
             io.emit('alert fired', {_id: _id, id_ganado: id_ganado, zona: zona.nombre});
         }
     }

@@ -51,7 +51,7 @@ router.get('/devices/:id', isAuthenticated, async (req,res) => {
 });
 
 /* Ruta para obtener los detalles de un solo dispositivo */
-router.post('/devices/:id', async (req,res) => {
+router.post('/devices/:id', isAuthenticated, async (req,res) => {
 	const device = await DeviceGPS.findById(req.params.id).exec(function(err, device){
 		if (err) {
 			res.json(err);
