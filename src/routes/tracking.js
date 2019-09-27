@@ -4,6 +4,7 @@ const ZonaSchema = require('../models/Zona');
 const DeviceGPS = require('../models/DeviceGPS');
 const Zona = require('../models/Zona');
 var idZ = "";
+var codG = "";
 
 /* Ruta para registrar/actualizar un dispositivo GPS */
 router.post('/devices/dgps', async (req, res) => {    				
@@ -45,6 +46,7 @@ router.post('/devices/dgps', async (req, res) => {
                     alerta:alerta										// Se actualiza el estado de alerta
                 });
                 idZ = device.id_zona;
+                codG = device.id_ganado;
                 res.sendStatus(200);									// Status 200 (actualizado)
             }else{
                 res.sendStatus(201);									// Status 201 (creado)
@@ -55,8 +57,8 @@ router.post('/devices/dgps', async (req, res) => {
         res.sendStatus(500);	// Status 500 (error interno del server)
     }finally{			// Siempre se verifica el estado de alerta de un dispositivo
         if(alerts===true){
-			const zona = await Zona.findById(idZ);
-            io.emit('alert fired', {_id: _id, id_ganado: id_ganado, zona: zona.nombre});
+            const zona = await Zona.findById(idZ);
+            io.emit('alert fired', {_id: _id, id_ganado: codG, zona: zona.nombre});
         }
     }
 });
