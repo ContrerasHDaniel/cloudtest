@@ -14,7 +14,7 @@ const DeviceGPSSchema = new Schema({
     nombre: String,
     id_zona: String,
     position: [positionSchema],
-    carga: String,
+    battery: String,
     alerta: Boolean
 });
 module.exports = mongoose.model('DeviceGPS', DeviceGPSSchema);

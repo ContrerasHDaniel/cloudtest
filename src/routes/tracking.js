@@ -9,10 +9,10 @@ var codG = "";
 /* Ruta para registrar/actualizar un dispositivo GPS */
 router.post('/devices/dgps', async (req, res) => {    				
 	// Se obtienen todos los campos enviados por el dispositivo
-	var {_id, id_ganado, nombre, id_zona, lat, lng, carga, alerta } = req.body;
+	var {_id, id_ganado, nombre, id_zona, lat, lng, battery, alerta } = req.body;
 	// TEMPORAL: Mientras el dispositivo no emita la batería restante se genera un número aleatorio para reemplazar el valor nulo recibido.
-	if(carga=='null' || carga == null){
-		carga = Math.floor((Math.random() * 10) + 90).toString();
+	if(battery=='null' || battery == null){
+		battery = Math.floor((Math.random() * 10) + 90).toString();
 	}
 	
 	// Bandera para obtener si un dispositivo disparó una alerta.
@@ -28,7 +28,7 @@ router.post('/devices/dgps', async (req, res) => {
                 nombre:nombre, 
                 id_zona: id_zona, 
                 position:{_id: Date.now(), lat:lat,lng:lng}, // De acuerdo al esquema interno de posicion.
-                carga: carga,
+                battery: battery,
                 alerta: alerta
             }
 		);
@@ -42,7 +42,7 @@ router.post('/devices/dgps', async (req, res) => {
                     {
                         position:{_id: Date.now(), lat:lat, lng:lng},	// Se agregan las nuevas coordenadas y la hora de registro como identificador.
                     },
-                    carga: carga,										// Se actualiza la carga de la batería
+                    battery: battery,										// Se actualiza la carga de la batería
                     alerta:alerta										// Se actualiza el estado de alerta
                 });
                 idZ = device.id_zona;
