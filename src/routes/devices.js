@@ -95,5 +95,4 @@ function getLastLatLng(devices){
 	return devices;
 }
 
-
 module.exports = router;

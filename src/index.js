@@ -92,6 +92,7 @@ app.use(require('./routes/update'));
 app.use(require('./routes/tracking'));
 app.use(require('./routes/devices'));
 app.use(require('./routes/users'));
+app.use(require('./routes/mobile'));
 
 // Static Files
 var options ={
