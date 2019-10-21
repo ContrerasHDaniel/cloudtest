@@ -1,15 +1,27 @@
-<div>
-	<table class="table table-hover">
+<div class="container container-full">
+	<table class="responsivetable">
 		<thead class="thead-light">
+		<thead style="color:antiquewhite">
+			<tr>
 			<tr>
 				<th scope="col-sm-3">Código de barras</th>
+				<th>Código de barras</th>
 				<th scope="col-sm-3">Alias</th>
+				<th>Alias</th>
 				<th scope="col-sm-3">Rancho</th>
+				<th>Rancho</th>
 				<th scope="col-sm-3">Activo</th>
+				<th>Activo</th>
+			</tr>
 			</tr>
 		</thead>
+		</thead>
+		<tbody>
 		<tbody>
 			{{fillDevices devices}}
+			{{fillDevices devices zonas}}
 		</tbody>
+		</tbody>
+	</table>
 	</table>
 </div>
