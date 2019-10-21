@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const ZonaSchema = require('../models/Zona');
 const DeviceGPS = require('../models/DeviceGPS');
-const Zona = require('../models/Zona');
+var admin = require("firebase-admin");
+var serviceAccount = require("../public/gantrack-a58c4-firebase-adminsdk-4ihsd-c48084bb14.json");
 var idZ = "";
 var codG = "";
 
@@ -57,10 +58,22 @@ router.post('/devices/dgps', async (req, res) => {
         res.sendStatus(500);	// Status 500 (error interno del server)
     }finally{			// Siempre se verifica el estado de alerta de un dispositivo
         if(alerts===true){
-            const zona = await Zona.findById(idZ);
+            const zona = await ZonaSchema.findById(idZ);
             io.emit('alert fired', {_id: _id, id_ganado: codG, zona: zona.nombre});
+            var payload = {
+				notification: {
+				  title: "Alerta en la zona: " + zona.nombre,
+				  body: "El Animal " + id_ganado  + " se ha desconectado"
+				}
+			  };
+			admin.messaging().sendToTopic("GanTrack",payload);
         }
     }
 });
+
+admin.initializeApp({
+	credential: admin.credential.cert(serviceAccount),
+	databaseURL: "https://gantrack-a58c4.firebaseio.com"
+  });
 
 module.exports = router;

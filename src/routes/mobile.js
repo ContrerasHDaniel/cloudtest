@@ -1,9 +1,15 @@
+const express = require('express');
+const router = express.Router();
+const User = require('../models/User');
+const passport = require('passport');
+const DeviceGPS = require('../models/DeviceGPS');
+const Zona = require('../models/Zona');
+const { isAuthenticated } = require('../helpers/auth');
 
 router.get('/mobile/zones', isAuthenticated, async (req, res) => {
 	const zones = await Zona.find().exec(function(err, zones){
 		//Regresa un JSONArray con las zonas disponibles
         res.json(zones);
-        console.log(zones);
 		if (err) {
 			console.error(err);
 		}
@@ -39,3 +45,5 @@ router.get('/mobile/devices', isAuthenticated, async (req, res) => {
 		});
 	});
 });
+
+module.exports = router;
