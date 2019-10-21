@@ -27,7 +27,7 @@ function notifyMe(id_ganado, id_zona) {
             body: "El animal "+ id_ganado + " se desconectó",
             dir : "ltr"
         };
-        var notification = new Notification("Alerta en la zona: " + id_zona, options);
+        var notification = new Notification("Alerta en la zona: " + zona, options);
     }
   
     // Otherwise, we need to ask the user for permission
