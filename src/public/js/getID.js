@@ -7,7 +7,7 @@ function getID(selectedOption){
         // SuccessHandler
         var out = "";
         devices.forEach(device => { // Se crea una nueva fila por cada dispositivo encontrado.
-            out += "<tr><th scope ='row'>"+device.id_ganado+"</th><td>"+device.nombre+"</td><td>"+device.carga+"</td>";
+            out += "<tr><td>"+device.id_ganado+"</td><td>"+device.nombre+"</td><td>"+device.carga+"</td>";
         });
         document.getElementById('tabDev').innerHTML = out; // Se dibujan las filas en la tabla
         updateMap(devices); // Se actualizan los marcadores dentro del mapa
