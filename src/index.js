@@ -27,22 +27,8 @@ app.engine('.hbs',
 						getZonas: function(zonas) {
 							var str;
 							zonas.forEach(zona => {
-								str += '<option value="'+zona._id+'">' + zona.nombre + '</option>';
+								
 							});
-							return new Handlebars.SafeString(str);
-						},
-
-						fillDevices: function(devices) {
-							var str;
-							devices.forEach(device =>{
-								if (device.id_zona == "g11111") {
-									device.nombre_zona = "Rancho B";
-								}else{
-									device.nombre_zona = "Rancho A";
-								}
-								str+='<tr><th scope="row">'+device.id_ganado+'</th><td>'+device.nombre+'</td><td>'+device.nombre_zona+'</td><td class="table-success">Online</td></tr>';
-							});
-							
 							return new Handlebars.SafeString(str);
 						},
 					}
@@ -56,8 +42,6 @@ app.use(express.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 app.use(session({
 	secret: 'mysecretapp',
-	resave: true,
-	saveUninitialized: true
 }));
 
 app.use(flash());
