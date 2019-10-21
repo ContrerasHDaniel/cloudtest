@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const DeviceGPS = require('../models/DeviceGPS');
 const ZonaSchema = require('../models/Zona');
+const { isAuthenticated } = require('../helpers/auth');
 
 /* Ruta para la página de actualización de dispositivos (PENDIENTE: para un usuario dado)*/
 router.get('/update', async (req, res) => {
