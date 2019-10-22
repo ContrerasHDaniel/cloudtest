@@ -30,7 +30,7 @@ app.engine('.hbs',
 							var str;
 							zonas.forEach(zona => {
 								str += '<li data-value="'+zona._id+'"><span>' 
-								+ zona.nombre + '</span>' 
+								+ zona.zone_name + '</span>' 
 								+ '</li>';
 							});
 							return new Handlebars.SafeString(str);

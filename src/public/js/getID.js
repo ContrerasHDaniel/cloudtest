@@ -1,22 +1,44 @@
+function getVacas(selectedOption) {
+    $.ajax({
+        url: "/monitoreo",
+        type: "POST",
+        data: {zone_id: selectedOption},
+        dataType: 'json',
+        success: function (ganado) {
+            var out = "";
+            ganado.forEach(vaca => {
+                out+='<tr><td id=\"tag\" value=\"'+ vaca._id +'\">' + vaca._id + '</td><td>'+vaca.alias+'</td><td>'+vaca.battery+'</td>';
+            });
+
+            document.getElementById('tabla_vacas').innerHTML = out;
+        },
+        statusCode: {
+            500: function (statusCode) {
+                alert('Algo salió mal. Código: '+statusCode)
+            }
+        }
+    });
+}
+
 /**
  * Obtiene los dispositivos asociados a un id de zona (selectedOption) y los dibuja en una tabla 'tabDev'.
  * @param {HTMLSelectElement.value} selectedOption 
  */
 function getID(selectedOption){
-    getJSON('http://148.217.94.130/devices/'+selectedOption, function(devices) {
+    getJSON('/devices/'+selectedOption, function(devices) {
         // SuccessHandler
         var out = "";
-        
+
         devices.forEach(device => { // Se crea una nueva fila por cada dispositivo encontrado.
             out += "<tr><td>"+device.id_ganado+"</td><td>"+device.nombre+"</td><td>"+device.carga+"</td>";
         });
+        
         document.getElementById('tabDev').innerHTML = out; // Se dibujan las filas en la tabla
         updateMap(devices); // Se actualizan los marcadores dentro del mapa
     }, function(status) {
         // ErrorHandler
 	    alert('Something went wrong. Status: '+status);
     });
-    
 }
 
 /**
