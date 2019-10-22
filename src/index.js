@@ -61,6 +61,29 @@ app.engine('.hbs',
 							
 							return new Handlebars.SafeString(str);
 						},
+
+						fillGanado: function(ganado) {
+							var str = "";
+							ganado.forEach(vaca => {
+								str+='<tr role=\"row\" data-toggle=\"modal\" id=\"' + vaca._id + '\" data-target=\"#updateModal\">'
+								+ '<td class=\"sorting_1\" id=\"tag\">'+ vaca._id + '</td>'
+								+ '<td id=\"alias\">' + vaca.alias + '</td>'
+								+ '<td id=\"breed\">' + vaca.breed + '</td>'
+								+ '<td id=\"type\">' + vaca.type + '</td>'
+								+ '<td id=\"weight\">' + vaca.weight + '</td>'
+								+ '<td id=\"age\">' + vaca.age + '</td>'
+								+ '<td id=\"sex\">' + vaca.sex + '</td>'
+								+ '<td id=\"zone\" value=\"'+ vaca.zone_id +'\" >'+ vaca.zone_name +'</td>';
+
+								if (vaca.alerta) {
+									str+= '<td id = \"status\" class="table-danger">Desconectado</td></tr>';
+								}else{
+									str+= '<td id = \"status\" class="table-success">En línea</td></tr>';
+								}
+							});
+
+							return new Handlebars.SafeString(str);
+						}
 					}
 				})
 		);

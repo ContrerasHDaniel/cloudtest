@@ -769,7 +769,12 @@ button {
     border-color: teal;
 }
 
+/*************************/
 /****  PAG MI GANADO  ****/
+.text-align-center {
+    text-align: center !important;
+}
+
 .card {
     position: relative;
     display: flex;
@@ -976,3 +981,4 @@ table.dataTable td, table.dataTable th {
 }
 
 /****  PAG MI GANADO  ****/
+/*************************/
