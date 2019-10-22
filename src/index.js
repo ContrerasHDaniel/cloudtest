@@ -112,6 +112,7 @@ app.use((req, res, next) => {
 // Routes
 app.use(require('./routes/index'));
 app.use(require('./routes/ganado'));
+app.use(require('./routes/monitoreo'));
 app.use(require('./routes/tracking'));
 app.use(require('./routes/devices'));
 app.use(require('./routes/users'));

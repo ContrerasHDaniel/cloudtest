@@ -4,10 +4,10 @@ const {Schema} = mongoose;
 
 const ZonaSchema = new Schema({
     _id: String,
-    id_empresa: String,
-    nombre: String,
-    lat: String,
-    lng: String
+    client_id: String,
+    zone_name: String,
+    zone_lat: String,
+    zone_lng: String
 });
 
 module.exports = mongoose.model('Zona', ZonaSchema);
