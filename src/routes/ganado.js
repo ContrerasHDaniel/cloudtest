@@ -3,7 +3,7 @@ const router = express.Router();
 const Ganado = require('../models/Ganado');
 const { isAuthenticated }  = require('../helpers/auth');
 
-router.get('/ganado', async (req, res) => {
+router.get('/ganado', isAuthenticated, async (req, res) => {
     const ganado = await Ganado.aggregate([
         {
            $lookup: {
