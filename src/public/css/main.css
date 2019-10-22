@@ -95,136 +95,7 @@ footer{
 .selected-item p span {
     font-weight: bold;
 }
-.dropdown {
-    flex: 0 0 auto;
-	width: auto;
-	max-width: 100%;
-    margin: 0px;
-    position: relative;
-    perspective: 800px;
-}
-.dropdown.active .selLabel:after {
-    content: '\25B2';
-}
-.dropdown.active .dropdown-list li:nth-child(1) {
-    transform: translateY(100%);
-}
-.dropdown.active .dropdown-list li:nth-child(2) {
-    transform: translateY(200%);
-}
-.dropdown.active .dropdown-list li:nth-child(3) {
-    transform: translateY(300%);
-}
-.dropdown.active .dropdown-list li:nth-child(4) {
-    transform: translateY(400%);
-}
-.dropdown > span {
-    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    background: hsl(0, 5%, 22%);
-    color: antiquewhite;
-    font-size: 18px;
-    letter-spacing: 2px;
-    display: flex;
-    padding: 0 50px 0 30px;
-    position: relative;
-    z-index: 10000;
-    cursor: pointer;
-    transform-style: preserve-3d;
-    transform-origin: 50% 0%;
-    transition: transform 300ms;
-    -webkit-touch-callout: none;
-    user-select: none;
-}
-.dropdown > span:after {
-    content: '\25BC';
-    position: absolute;
-    right: 0px;
-    top: 15%;
-    width: 50px;
-    text-align: center;
-    font-size: 12px;
-    padding: 10px;
-    height: 70%;
-    line-height: 24px;
-    border-left: 1px solid #ddd;
-}
-.dropdown > span:active {
-    transform: rotateX(45deg);
-}
-.dropdown > span:active:after {
-    content: '\25B2';
-}
-.dropdown-list {
-    position: absolute;
-    top: 0px;
-    width: 100%;
-}
-.dropdown-list li {
-    display: flex;
-    list-style: none;
-    left: 0;
-    opacity: 1;
-    transition: transform 300ms ease;
-    position: absolute;
-    top: 0;
-    width: 100%;
-}
-.dropdown-list li:nth-child(1) {
-    background: hsl(0, 79%, 60%);
-    background: -webkit-linear-gradient(to right, #93291E, hsl(0, 79%, 60%));
-    background: linear-gradient(to right, #93291E, hsl(0, 79%, 60%));
-    transform: translateY(0);
-}
-.dropdown-list li:nth-child(2) {
-    background: hsl(0, 79%, 60%);
-    background: -webkit-linear-gradient(to right, #93291E, hsl(0, 79%, 60%));
-    background: linear-gradient(to right, #93291E, hsl(0, 79%, 60%));
-    transform: translateY(3%);
-}
-.dropdown-list li:nth-child(3) {
-    background: hsl(0, 79%, 60%);
-    background: -webkit-linear-gradient(to right, #93291E, hsl(0, 79%, 60%));
-    background: linear-gradient(to right, #93291E, hsl(0, 79%, 60%));    
-    transform: translateY(6%);
-}
-.dropdown-list li:nth-child(4) {
-    background: hsl(0, 79%, 60%);
-    background: -webkit-linear-gradient(to right, #93291E, hsl(0, 79%, 60%));
-    background: linear-gradient(to right, #93291E, hsl(0, 79%, 60%));
-    transform: translateY(9%);
-}
 
-.dropdown-list li span {
-    box-shadow: 0 1px 1px rgba(0,0,0,0.2);
-    -webkit-touch-callout: none;
-    user-select: none;
-    width: 100%;
-    font-size: 18px;
-    line-height: 60px;
-    padding: 0 30px;
-    display: flex;
-    color: antiquewhite;
-    cursor: pointer;
-    letter-spacing: 2px;
-}
-
-.idx-10000 {
-    z-index: 10000;
-    position: absolute;
-}
-
-.idx-9000 {
-    z-index: 9000;
-    position: relative;
-}
-
-.idx-9500 {
-    z-index: 9500;
-    position: relative;
-}
 
 .responsivetable {
     flex: 0 0 auto;
@@ -771,6 +642,7 @@ button {
 
 /*************************/
 /****  PAG MI GANADO  ****/
+/*************************/
 .text-align-center {
     text-align: center !important;
 }
@@ -803,29 +675,12 @@ button {
     padding: 1.25rem;
 }
 
-.table-responsive {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-div.table-responsive > div.dataTables_wrapper > div.row {
-    margin: 0;
-}
-
 .row {
     display: flex;
     flex-wrap: wrap;
 }
 
-div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:first-child {
-    padding-left: 0;
-}
 
-div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:last-child {
-    padding-right: 0;
-}
 
 div.dataTables_wrapper div.dataTables_filter {
     text-align: right;
@@ -974,11 +829,167 @@ table.dataTable td, table.dataTable th {
     max-width: 100%;
 }
 
-.col-md-6, .col-sm-12 {
+.col-md-6, .col-md-4, .col-md-8, .col-sm-12 {
     position: relative;
     width: 100%;
     padding-right: .75rem;
 }
-
+/*************************/
 /****  PAG MI GANADO  ****/
+/*************************/
+
+/*************************/
+/****  PAG MONITOREO  ****/
+/*************************/
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+div.table-responsive > div.dataTables_wrapper > div.row {
+    margin: 0;
+}
+
+div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:first-child {
+    padding-left: 0;
+}
+
+div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:last-child {
+    padding-right: 0;
+}
+
+.align-items-center {
+    align-items: center !important;
+}
+
+#wrapper {
+    display: flex;
+}
+
+.idx-9000 {
+    z-index: 9000;
+    position: relative;
+}
+
+.dropdown {
+    flex: 0 0 auto;
+	width: auto;
+	max-width: 100%;
+    margin: 0px;
+    position: relative;
+    perspective: 800px;
+}
+.dropdown.active .selLabel:after {
+    content: '\25B2';
+}
+.dropdown.active .dropdown-list li:nth-child(1) {
+    transform: translateY(100%);
+}
+.dropdown.active .dropdown-list li:nth-child(2) {
+    transform: translateY(200%);
+}
+.dropdown.active .dropdown-list li:nth-child(3) {
+    transform: translateY(300%);
+}
+.dropdown.active .dropdown-list li:nth-child(4) {
+    transform: translateY(400%);
+}
+.dropdown > span {
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background: hsl(0, 5%, 22%);
+    color: antiquewhite;
+    font-size: 18px;
+    letter-spacing: 2px;
+    display: flex;
+    padding: 0 50px 0 30px;
+    position: relative;
+    z-index: 10000;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transform-origin: 50% 0%;
+    transition: transform 300ms;
+    -webkit-touch-callout: none;
+    user-select: none;
+}
+.dropdown > span:after {
+    content: '\25BC';
+    position: absolute;
+    right: 0px;
+    top: 15%;
+    width: 50px;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px;
+    height: 70%;
+    line-height: 24px;
+    border-left: 1px solid #ddd;
+}
+.dropdown > span:active {
+    transform: rotateX(45deg);
+}
+.dropdown > span:active:after {
+    content: '\25B2';
+}
+.dropdown-list {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+.dropdown-list li {
+    display: flex;
+    list-style: none;
+    left: 0;
+    opacity: 1;
+    transition: transform 300ms ease;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.dropdown-list li:nth-child(1) {
+    background: hsl(0, 79%, 60%);
+    background: -webkit-linear-gradient(to right, #93291E, hsl(0, 79%, 60%));
+    background: linear-gradient(to right, #93291E, hsl(0, 79%, 60%));
+    transform: translateY(0);
+}
+.dropdown-list li:nth-child(2) {
+    background: hsl(0, 79%, 60%);
+    background: -webkit-linear-gradient(to right, #93291E, hsl(0, 79%, 60%));
+    background: linear-gradient(to right, #93291E, hsl(0, 79%, 60%));
+    transform: translateY(3%);
+}
+.dropdown-list li:nth-child(3) {
+    background: hsl(0, 79%, 60%);
+    background: -webkit-linear-gradient(to right, #93291E, hsl(0, 79%, 60%));
+    background: linear-gradient(to right, #93291E, hsl(0, 79%, 60%));    
+    transform: translateY(6%);
+}
+.dropdown-list li:nth-child(4) {
+    background: hsl(0, 79%, 60%);
+    background: -webkit-linear-gradient(to right, #93291E, hsl(0, 79%, 60%));
+    background: linear-gradient(to right, #93291E, hsl(0, 79%, 60%));
+    transform: translateY(9%);
+}
+
+.dropdown-list li span {
+    box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+    -webkit-touch-callout: none;
+    user-select: none;
+    width: 100%;
+    font-size: 18px;
+    line-height: 60px;
+    padding: 0 30px;
+    display: flex;
+    color: antiquewhite;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+/*************************/
+/****  PAG MONITOREO  ****/
 /*************************/

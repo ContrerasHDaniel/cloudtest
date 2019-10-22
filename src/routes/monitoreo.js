@@ -8,7 +8,7 @@ router.get('/monitoreo', async(req, res) =>{
         if (err) {
             res.sendStatus(500);
         }else{
-            res.json(zonas);
+            res.render('monitoreo', {zonas});
         }
     });
 });

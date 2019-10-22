@@ -1,0 +1,105 @@
+<!-- DataTables CDN -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+<!-- Monitoreo page -->
+<div id="wrapper">
+    <!-- Columna Select - Table -->
+    <div class="col-md-4 align-items-center">
+        <div class="card shadow mb-4">
+            <!-- Card Header -->
+            <div class="card-header py-3">
+                <div class="col-md-6">
+                    <h6 class="m-0 text-primary">
+                        Seleccione un rancho
+                    </h6>
+                </div>
+            </div>
+            <!-- Card Header -->
+            <!-- Card Body -->
+            <div class="card-body">
+                <!-- Dropdown -->
+                <div class="dropdown idx-9000">
+                    <span class="selLabel">Rancho</span>
+                    <input type="hidden" name="cd-dropdown">
+                    <ul class="dropdown-list">
+                        <li><span>Zacatecas</span></li>
+                        <li><span>Guadalupe</span></li>
+                    </ul>
+                </div>
+                <!-- Dropdown -->
+                <!-- DataTable -->
+                <div class="table-responsive">
+                    <div class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table id="dataTable" class="table table-bordered dataTable text-align-center" role="grid" aria-describedby="dataTable_info">
+                                    {{> tabla_monitHnF}}
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- DataTable -->
+            </div>
+            <!-- Card Body -->
+        </div>
+    </div>
+    <!-- Columna Select - Table -->
+    <!-- Columna mapa-->
+    <div class="col-md-8 align-items-center">
+        <div class="card shadow mb-4">
+            <!-- Card header -->
+            <div class="card-header py-3">
+                <div class="col-md-6">
+                    <h6 class="m-0 text-primary">Rancho: </h6>
+                </div>
+            </div>
+            <!-- Card body -->
+            <div class="card-body">
+                <div class="map-area">
+                    <div id="map">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Columna mapa-->
+</div>
+<!-- Monitoreo page -->
+
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- DataTables Script -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<!-- Maps API -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5Jx2pqC6kJCEmSP_1yoVdGmvr6HZUJSI&callback=initMap" async defer></script>
+<script>
+        $(document).ready(function(){
+
+        //Inicializa el dataTable
+        var table = $('#dataTable').DataTable({
+            "language": {
+                zeroRecords: "No hay registros para mostrar",
+            },
+            "dom": 'rt'
+        });
+
+        /* Eventos del select */
+        $(".selLabel").click(function () {
+    		$('.dropdown').toggleClass('active');
+  		});
+  
+  		$(".dropdown-list li").click(function() {
+			center = $(this).attr('data-value');
+			document.getElementById('map-title').innerText = "Rancho: " + $(this).text();
+    		$('.selLabel').text($(this).text());
+    		$('.dropdown').removeClass('active');
+    		$('.selected-item p span').text($('.selLabel').text());
+  		});
+        /* Eventos del select */
+    });
+</script>
