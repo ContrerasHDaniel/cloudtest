@@ -1,0 +1,57 @@
+<!-- DataTables CDN -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+<!-- ganado page -->
+<div class="card shadow mb-4">
+    <!-- Card header -->
+    <div class="card-header py-3">
+        <div class="col-md-6">
+            <h6 class="m-0 text-primary">Inventario de vacas/dispositivos</h6>
+        </div>
+    </div>
+    <!-- Card body (dataTable) -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="dataTable" class="table table-bordered dataTable" role="grid" aria-describedby="dataTable_info" style="width: ;">
+                            {{> tabla_ganadoHnF}}
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- DataTables Script -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<script>
+    $(document).ready(function(){
+
+        //Inicializa el dataTable
+        var table = $('#dataTable').DataTable({
+            "language": {
+                lengthMenu: "Mostrar _MENU_ registros por página",
+                zeroRecords: "No hay registros para mostrar",
+                info: "Mostrando página _PAGE_ de _PAGES_",
+                infoEmpty: "No hay registros disponibles",
+                infoFiltered: "(filtrados de un total de _MAX_ registros)",
+                search: "Buscar"
+            },
+            "oLanguage":{
+                "oPaginate":{
+                    sNext: "Siguiente",
+                    sPrevious: "Anterior"
+                }
+            }
+        });
+
+    });
+</script>

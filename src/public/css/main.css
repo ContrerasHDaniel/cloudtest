@@ -768,3 +768,211 @@ button {
     background-color: teal;
     border-color: teal;
 }
+
+/****  PAG MI GANADO  ****/
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #e3e6f0;
+    border-radius: .35rem;
+}
+
+.card-header:first-child {
+    border-radius: calc(.35rem - 1px) calc(.35rem -1px) 0 0;
+}
+
+.card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #f8f9fc;
+    border-bottom: 1px solid #e3e6f0;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+div.table-responsive > div.dataTables_wrapper > div.row {
+    margin: 0;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:first-child {
+    padding-left: 0;
+}
+
+div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:last-child {
+    padding-right: 0;
+}
+
+div.dataTables_wrapper div.dataTables_filter {
+    text-align: right;
+}
+
+div.dataTables_wrapper div.dataTables_length label {
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+}
+
+div.dataTables_wrapper div.dataTables_filter label {
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    margin-left: 0.5em;
+    display: inline-block;
+    width: auto;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+
+div.dataTables_wrapper div.dataTables_length select {
+	width: auto;
+	display: inline-block;
+}
+
+table.dataTable {
+    clear: both;
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+    max-width: none !important;
+    border-collapse: separate !important;
+    border-spacing: 0;
+}
+
+.table-bordered {
+    border: 1px solid #e3e6f0;
+}
+
+.table {
+    color: #858796;
+}
+
+.table tr:nth-child(odd) {
+    background-color: #f8f9fc;
+}
+
+.table tr:nth-child(even) {
+    background-color: aliceblue;
+}
+
+.table tbody tr:hover {
+    background-color: #90afec;
+    color: cornsilk;
+    -webkit-box-shadow: 0 6px 6px -6px #90afec;
+    -moz-box-shadow: 0 6px 6px -6px #90afec;
+    box-shadow: #858992 -1px 1px,
+    #858992 -2px 2px,
+    #858992 -3px 3px,
+    #858992 -4px 4px,
+    #858992 -5px 5px,
+    #858992 -6px 6px;
+    transform: translate3d(6px, -6px, 0);
+    transition-delay: 0s;
+    transition-property: all;
+    transition-timing-function: line;
+    cursor: pointer;
+}
+
+table.dataTable thead > tr > th.sorting_asc, table.dataTable thead > tr > th.sorting_desc, table.dataTable thead > tr > th.sorting, table.dataTable thead > tr > td.sorting_asc, table.dataTable thead > tr > td.sorting_desc, table.dataTable thead > tr > td.sorting {
+	padding-right: 30px;
+}
+
+table.table-bordered.dataTable th, table.table-bordered.dataTable td {
+	border-left-width: 0;
+}
+
+table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc, table.dataTable thead .sorting_asc_disabled, table.dataTable thead .sorting_desc_disabled {
+	cursor: pointer;
+	position: relative;
+}
+
+table.dataTable td, table.dataTable th {
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+.table-bordered thead td, .table-bordered thead th {
+	border-bottom-width: 2px;
+}
+
+.table thead th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #e3e6f0;
+}
+
+.table-bordered td, .table-bordered th {
+	border: 1px solid #e3e6f0;
+}
+
+.table td, .table th {
+	padding: .75rem;
+	vertical-align: top;
+	border-top: 1px solid #e3e6f0;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shadow {
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, .15);
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+
+.py-3 {
+    padding-bottom: 1rem !important;
+}
+
+.py-3 {
+    padding-top: 1rem !important;
+}
+
+.m-0 {
+    margin: 0 !important;
+}
+
+.col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;   
+}
+
+.col-sm-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.col-md-6, .col-sm-12 {
+    position: relative;
+    width: 100%;
+    padding-right: .75rem;
+}
+
+/****  PAG MI GANADO  ****/

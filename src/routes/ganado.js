@@ -53,7 +53,7 @@ router.get('/ganado', async (req, res) => {
         if (err) {
             res.sendStatus(500);
         } else {
-            res.json(ganado);
+            res.render('ganado', {ganado});
         }
     });
 });
