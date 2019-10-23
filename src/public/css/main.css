@@ -990,6 +990,12 @@ div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:las
     letter-spacing: 2px;
 }
 
+
+.battery {
+    width: 30px;
+    height: 15px;
+    transform: rotate(-90deg);
+}
 /*************************/
 /****  PAG MONITOREO  ****/
 /*************************/

@@ -13,9 +13,6 @@ const app = express();
 require('./dbconnect');
 require('./config/passport');
 
-//const publicVapidKey = "BFwZBMBKTHq_h07CVqNCbVBw46_gXhi1crRWvzUM0sCoNtW-foSYnabc7S0PSzLaMY2zgGC6V0Ip7fdrYt2TDmY";
-//const privateVapidKey = "fPCiJk-TCouOgiwV9eXQhRew6QLHqWeOunw8ie_Ksj8";
-
 // Settings
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname,'views'));
