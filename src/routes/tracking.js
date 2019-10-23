@@ -27,7 +27,7 @@ router.post('/devices/dgps', async (req, res) => {
                 id_ganado: id_ganado, 
                 nombre:nombre, 
                 id_zona: id_zona, 
-                position:{_id: Date.now(), lat:lat,lng:lng}, // De acuerdo al esquema interno de posicion.
+                position:{_id: Date.now(), lat: getLat(lat), lng: getLng(lng)}, // De acuerdo al esquema interno de posicion.
                 battery: battery,
                 alerta: alerta
             }
@@ -40,7 +40,7 @@ router.post('/devices/dgps', async (req, res) => {
 				// Se intenta actualizar en base al _id del dispositivo creado en el modelo.
                 const device = await DeviceGPS.findByIdAndUpdate(_id, {$push: 
                     {
-                        position:{_id: Date.now(), lat:lat, lng:lng},	// Se agregan las nuevas coordenadas y la hora de registro como identificador.
+                        position:{_id: Date.now(), lat:getLat(lat),lng:getLng(lng)},	// Se agregan las nuevas coordenadas y la hora de registro como identificador.
                     },
                     battery: battery,										// Se actualiza la carga de la batería
                     alerta:alerta										// Se actualiza el estado de alerta
@@ -62,5 +62,22 @@ router.post('/devices/dgps', async (req, res) => {
         }
     }
 });
+
+/* Funciones de soporte */
+// Conversion del número obtenido por la consulta a un flotante para latitud
+function getLat(lat){
+    var b = ".";
+    var positionLat = 2;
+    var outputLat = [lat.slice(0, positionLat), b, lat.slice(positionLat)].join('');
+    return outputLat;
+}
+
+// Conversion del número obtenido por la consulta a un flotante para latitud
+function getLng(lng){
+    var b = ".";
+    var positionLng = 4;
+    var outputLng = [lng.slice(0, positionLng), b, lng.slice(positionLng)].join('');
+    return outputLng;
+}
 
 module.exports = router;

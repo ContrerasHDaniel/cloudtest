@@ -57,9 +57,28 @@ router.get('/ganado', isAuthenticated, async (req, res) => {
             res.sendStatus(500);
         } else {
             // Si no ocurre un error se dibuja la página 'ganado.hbs' y se envían los datos necesarios en el json 'ganados'
+            ganado = getLastLatLng(ganado);
             res.render('ganado', {ganado});
         }
     });
 });
+
+
+// Modifica el arreglo de posiciones para dejar solamente la última posición conocida del dispositivo.
+function getLastLatLng(ganado){
+	// Se mapea el documento devices, obtenido por la consulta para poder realizar operaciones como si fuera un arreglo.
+	ganado.map(function(vaca){
+		// Se obtienen las últimas coordenadas en el arreglo position y se almacenan en variables temporales.
+		var lat = vaca.position[vaca.position.length -1 ].lat;	
+		var lng = vaca.position[vaca.position.length -1 ].lng;
+		// Se borran las demás coordenadas contenidas en el arreglo position.
+		vaca.position = [];
+		// Se escriben en el arreglo position las últimas coordenadas.
+		vaca.position = {lat: lat, lng: lng};
+		return vaca; 
+	});
+	// Se regresa el objeto modificado.
+	return ganado;
+}
 
 module.exports = router;

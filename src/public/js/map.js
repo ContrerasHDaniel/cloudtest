@@ -39,12 +39,12 @@ function updateMap(ganado){
       customMarker = "/public/img/toro_2.png";
     }else{
       customMarker = "/public/img/vaca_2.png";
-      drawMarker(vaca.position[0].lat, vaca.position[0].lng, vaca.alias, customMarker);
+      drawMarker(vaca.position.lat, vaca.position.lng, vaca.alias, customMarker);
     }
     // Se verifica que esté en la última iteración. de ser así, se actualiza la posicion central del mapa
     // a donde se encuentre el dispositivo último del arreglo
     if(idx === (ganado.length -1)){
-      latlngFocused = new google.maps.LatLng(vaca.position[0].lat, vaca.position[0].lng);
+      latlngFocused = new google.maps.LatLng(vaca.position.lat, vaca.position.lng);
     }
   });
   // Se muestran los marcadores en el mapa

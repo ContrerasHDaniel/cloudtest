@@ -5,7 +5,7 @@ const ZonaSchema = require('../models/Zona');
 const Ganado = require('../models/Ganado');
 
 /* Ruta de la página monitoreo, se dibuja la página y el mapa */
-router.get('/monitoreo', async(req, res) =>{
+router.get('/monitoreo', isAuthenticated, async(req, res) =>{
     // Se consultan las zonas registradas en la base de datos
     const zonas = await ZonaSchema.find().exec(function(err,zonas){
         if (err) {
@@ -60,9 +60,27 @@ router.post('/monitoreo', async (req, res) => {
             res.sendStatus(500);
         } else {
             // Si no hay errores, se envía un json con la info del ganado relacionado a la zona
+            ganado = getLastLatLng(ganado)
             res.json(ganado);
         }
     });
 });
+
+// Modifica el arreglo de posiciones para dejar solamente la última posición conocida del dispositivo.
+function getLastLatLng(ganado){
+	// Se mapea el documento devices, obtenido por la consulta para poder realizar operaciones como si fuera un arreglo.
+	ganado.map(function(vaca){
+		// Se obtienen las últimas coordenadas en el arreglo position y se almacenan en variables temporales.
+		var lat = vaca.position[vaca.position.length -1 ].lat;	
+		var lng = vaca.position[vaca.position.length -1 ].lng;
+		// Se borran las demás coordenadas contenidas en el arreglo position.
+		vaca.position = [];
+		// Se escriben en el arreglo position las últimas coordenadas.
+		vaca.position = {lat: lat, lng: lng};
+		return vaca; 
+	});
+	// Se regresa el objeto modificado.
+	return ganado;
+}
 
 module.exports = router;
