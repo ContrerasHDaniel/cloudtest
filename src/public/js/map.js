@@ -16,7 +16,7 @@ function initMap(){
     // Crea el mapa y lo dibuja en el div 'map'
     map = new google.maps.Map(document.getElementById('map'), {
         center: myLatlng,        
-        zoom: 13
+        zoom: 17
     });
     // Se actualiza la posición central a la de las coordenadas iniciales
     latlngFocused = myLatlng;
@@ -24,19 +24,25 @@ function initMap(){
 
 /**
  * Actualiza los marcadores de una zona dadas las posiciones de los dispositivos
- * @param {Array.prototype} devices 
+ * @param {Array.prototype} ganado 
  */
-function updateMap(devices){
+function updateMap(ganado){
   // Borra todos los marcadores ya dibujados.
   deleteMarkers();
   // Se recorre el arreglo de dispositivos para obtener las coordenadas y el identificador de ganado.
-  devices.forEach((device,idx,devices) => {
+  ganado.forEach((vaca,idx,ganado) => {
     // Se agrega un nuevo marcador por cada dispositivo en el arreglo.
-    drawMarker(device.position.lat, device.position.lng, device.id_ganado);
+    var customMarker = "";
+    if(vaca.sex == "M"){
+      customMarker = "/public/img/toro_2.png";
+    }else{
+      customMarker = "/public/img/vaca_2.png";
+      drawMarker(vaca.position[0].lat, vaca.position[0].lng, vaca.alias, customMarker);
+    }
     // Se verifica que esté en la última iteración. de ser así, se actualiza la posicion central del mapa
     // a donde se encuentre el dispositivo último del arreglo
-    if(idx === (devices.length -1)){
-      latlngFocused = new google.maps.LatLng(device.position.lat, device.position.lng);
+    if(idx === (ganado.length -1)){
+      latlngFocused = new google.maps.LatLng(vaca.position[0].lat, vaca.position[0].lng);
     }
   });
   // Se muestran los marcadores en el mapa
@@ -49,19 +55,30 @@ function updateMap(devices){
  * @param {String} lng 
  * @param {String} tag 
  */
-function drawMarker(lat, lng, tag){
+function drawMarker(lat, lng, tag, customMarker){
   // Se establecen las coordenadas del marcador
   var myLatlng = new google.maps.LatLng(lat,lng);
   // Se crea el nuevo marcador con las opciones definidas
+  var iconMap = new google.maps.MarkerImage(
+    customMarker,
+    null,
+    null,
+    null,
+    new google.maps.Size(40,32)
+  );
+  
   var marker = new google.maps.Marker({
+    icon: iconMap,
     position: myLatlng,
     title: tag,
     map: map,
+    opacity: 0.7,
     label: {
-      color: 'black',
+      color: '#800000',
+      fontSize: '14px',
       fontWeight: 'bold',
       text: tag,
-    },
+    }
   });
   // Se agrega al arreglo de marcadores
   markers.push(marker);
@@ -91,7 +108,7 @@ function clearMarkers(){
 function showMarkers(){
   setMapOnAll(map);
   map.panTo(latlngFocused);
-  map.setZoom(16);
+  map.setZoom(18);
 }
 
 /**

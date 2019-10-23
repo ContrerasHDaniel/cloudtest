@@ -11,6 +11,7 @@ function getVacas(selectedOption) {
             });
 
             document.getElementById('tabla_vacas').innerHTML = out;
+            updateMap(ganado);
         },
         statusCode: {
             500: function (statusCode) {

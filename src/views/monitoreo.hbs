@@ -10,7 +10,7 @@
             <div class="card-header py-3">
                 <div class="col-md-6">
                     <h6 class="m-0 text-primary">
-                        Seleccione un rancho
+                        Seleccione una zona
                     </h6>
                 </div>
             </div>
@@ -19,7 +19,7 @@
             <div class="card-body">
                 <!-- Dropdown -->
                 <div class="dropdown idx-9000">
-                    <span class="selLabel">Rancho</span>
+                    <span class="selLabel">Zona</span>
                     <input type="hidden" name="cd-dropdown">
                     <ul class="dropdown-list">
                         {{getZonas zonas}}
@@ -53,7 +53,7 @@
             <!-- Card header -->
             <div class="card-header py-3">
                 <div class="col-md-6">
-                    <h6 id="map-title" class="m-0 text-primary">Rancho: </h6>
+                    <h6 id="map-title" class="m-0 text-primary">Zona: </h6>
                 </div>
             </div>
             <!-- Card body -->
@@ -79,7 +79,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5Jx2pqC6kJCEmSP_1yoVdGmvr6HZUJSI&callback=initMap" async defer></script>
 <!-- Custom JS -->
 <script type='text/javascript' src='/js/map.js'></script>
-<script type='text/javascript' src='/js/getID.js'></script>
+<script type='text/javascript' src='/js/utilsMonitoreo.js'></script>
 
 <script>
     $(document).ready(function(){
@@ -98,7 +98,7 @@
         
         $(".dropdown-list li").click(function() {
             center = $(this).attr('data-value');
-            document.getElementById('map-title').innerText = "Rancho: " + $(this).text();
+            document.getElementById('map-title').innerText = "Zona: " + $(this).text();
             getVacas(center);
             $('.selLabel').text($(this).text());
             $('.dropdown').removeClass('active');
