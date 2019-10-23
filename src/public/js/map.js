@@ -33,6 +33,8 @@ function updateMap(ganado){
   ganado.forEach((vaca,idx,ganado) => {
     // Se agrega un nuevo marcador por cada dispositivo en el arreglo.
     var customMarker = "";
+
+    // Asigna el icono del marcador de acuerdo al sexo del animal
     if(vaca.sex == "M"){
       customMarker = "/public/img/toro_2.png";
     }else{
@@ -64,7 +66,7 @@ function drawMarker(lat, lng, tag, customMarker){
     null,
     null,
     null,
-    new google.maps.Size(40,32)
+    new google.maps.Size(25,25)
   );
   
   var marker = new google.maps.Marker({
@@ -75,7 +77,7 @@ function drawMarker(lat, lng, tag, customMarker){
     opacity: 0.7,
     label: {
       color: '#800000',
-      fontSize: '14px',
+      fontSize: '12px',
       fontWeight: 'bold',
       text: tag,
     }

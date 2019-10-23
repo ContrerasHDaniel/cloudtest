@@ -27,7 +27,6 @@ router.get('/index', isAuthenticated, async (req,res) => {
 		// De no ser así, se dibuja la página sin pasar los datos.
 		// Por consecuencia no se mostrarán datos.
 		if (err) {
-			console.error(err);		// Se imprime en consola el error.
 			res.render('index');
 		}
 	});
@@ -40,8 +39,10 @@ router.get('/public/img/:resource_name', (req, res) => {
 	/** TEMPORAL (para mayor seguridad, dar niveles de acceso a imagenes) **/
 	FS.stat(file, function (err, success) {
 		if (err) {
+			// Si no se encuentra el archivo se envía un código de forbidden
 			res.sendStatus(403);
 		} else {
+			// Si se encuentra, se regresa el archivo
 			res.sendFile(path.join(__dirname, '../public/img/'+req.params.resource_name));
 		}
 	});

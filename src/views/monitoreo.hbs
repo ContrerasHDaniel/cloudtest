@@ -97,14 +97,18 @@
         });
         
         $(".dropdown-list li").click(function() {
-            center = $(this).attr('data-value');
-            document.getElementById('map-title').innerText = "Zona: " + $(this).text();
-            getVacas(center);
             $('.selLabel').text($(this).text());
             $('.dropdown').removeClass('active');
             $('.selected-item p span').text($('.selLabel').text());
+            
+            // Se obtiene el id (center) de la zona
+            center = $(this).attr('data-value');
+            // Se cambia el título del mapa para describir la zona seleccionada
+            document.getElementById('map-title').innerText = "Zona: " + $(this).text();
+            // Se obtienen los animales en la zona y se dibujan en el mapa
+            getVacas(center);
         });
         /* Eventos del select */
-
+        
         });
 </script>

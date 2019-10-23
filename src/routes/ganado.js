@@ -3,13 +3,15 @@ const router = express.Router();
 const Ganado = require('../models/Ganado');
 const { isAuthenticated }  = require('../helpers/auth');
 
+/* Ruta para dibujar la página 'Mi ganado' */
 router.get('/ganado', isAuthenticated, async (req, res) => {
+    // Se realiza la consulta a Ganado para obtener todos los animales [de un usuario dado]
     const ganado = await Ganado.aggregate([
         {
            $lookup: {
               from: "devicegps",
-              localField: "device_id",    // field in the ganado collection
-              foreignField: "_id",  // field in the devicegps collection
+              localField: "device_id",    // campo en la colección ganado
+              foreignField: "_id",  // campo en la colección devicegps
               as: "device"
            }
         },
@@ -51,8 +53,10 @@ router.get('/ganado', isAuthenticated, async (req, res) => {
         }
      ]).exec(function(err, ganado){
         if (err) {
+            // Si ocurre un error se envía el estatus 500
             res.sendStatus(500);
         } else {
+            // Si no ocurre un error se dibuja la página 'ganado.hbs' y se envían los datos necesarios en el json 'ganados'
             res.render('ganado', {ganado});
         }
     });
