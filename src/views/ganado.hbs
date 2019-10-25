@@ -27,13 +27,16 @@
         </div>
     </div>
 </div>
-
+<!-- Modal actualizar -->
+{{> vaca_info}}
 <!-- JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- DataTables Script -->
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 <script>
     $(document).ready(function(){
+        var nombre = "";
+        var zone_id = "";
 
         //Inicializa el dataTable
         var table = $('#dataTable').DataTable({
@@ -51,6 +54,11 @@
                     sPrevious: "Anterior"
                 }
             }
+        });
+
+        $('#dataTable > tbody > tr').click(function(){
+            console.log($(this).attr('value'));
+            $('#updateModal').modal('show');
         });
 
     });

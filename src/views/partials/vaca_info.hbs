@@ -1,0 +1,91 @@
+ <!-- The Modal -->
+  <div class="modal fade" id="updateModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Información de [alias]</h4>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true"><i class="far fa-times-circle"></i></span>
+				</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+            <img class="img-responsive" src="https://i.imgur.com/QQLuAQd.jpg">
+            <div class="row">
+                <div class="col-xs-6 form-group mx-3">
+                    <label>Alias</label>
+                    <input class="form-control" type="text"/>
+                </div>
+                <div class="col-xs-6 ml-auto mr-4">
+                    <div class="form-group left-column">
+                        <label>Sexo</label>
+                        <select class="browser-default custom-select">
+                            <option value="f">F</option>
+                            <option value="m">M</option>
+                        </select>
+                    </div>
+                    <div class="form-group right-column mx-4">
+                        <label>Preñada</label>
+                        <select class="browser-default custom-select">
+                            <option value="0">No</option>
+                            <option value="1">Sí</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 form-group mx-3">
+                    <label>Raza</label>
+                    <select id="selectBreed" class="browser-default custom-select">
+                        <option value="1">Romagnola</option>
+                        <option value="2">Nelore</option>
+                        <option value="3">Limousine</option>
+                        <option value="4">Otra</option>
+                    </select>
+                </div>
+                <div class="col-xs-6 form-group mr-4 ml-auto">
+                    <div class="form-group left-column-txt">
+                        <label>Edad</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group right-column-txt mx-4">
+                        <label>Peso</label>
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 form-group mx-3">
+                    <label>Tipo</label>
+                    <input class="form-control" type="text"/>
+                </div>
+                <div class="col-xs-6 form-group mr-3 ml-auto">
+                    <label>Fierro</label>
+                    <input class="form-control" type="text"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 form-group mx-3">
+                    <label>Vacunas</label>
+                    <textarea rows="5" class="form-control">
+                    </textarea>
+                </div>
+                <div class="col-xs-6 form-group mr-3 ml-auto">
+                    <label>Señas particulares</label>
+                    <textarea rows="5" class="form-control">
+                    </textarea>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-info">Editar perfil</button>
+            <button type="button" class="btn btn-primary">Imprimir perfil</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+  </div>

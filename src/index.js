@@ -62,7 +62,7 @@ app.engine('.hbs',
 						fillGanado: function(ganado) {
 							var str = "";
 							ganado.forEach(vaca => {
-								str+='<tr role=\"row\" data-toggle=\"modal\" id=\"' + vaca._id + '\" data-target=\"#updateModal\">'
+								str+='<tr role=\"row\" data-toggle=\"modal\" id=\"vaca\" value=\"' + vaca._id + '\" data-target=\"#updateModal\">'
 								+ '<td class=\"sorting_1\" id=\"tag\">'+ vaca._id + '</td>'
 								+ '<td id=\"alias\">' + vaca.alias + '</td>'
 								+ '<td id=\"breed\">' + vaca.breed + '</td>'
