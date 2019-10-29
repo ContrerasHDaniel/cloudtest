@@ -110,6 +110,7 @@ app.use((req, res, next) => {
 app.use(require('./routes/index'));
 app.use(require('./routes/ganado'));
 app.use(require('./routes/monitoreo'));
+app.use(require('./routes/stats'));
 app.use(require('./routes/tracking'));
 app.use(require('./routes/users'));
 
