@@ -1,3 +1,8 @@
+
+/**
+ * Función para obtener los dispositivos asociados a una zona seleccionada
+ * @param {string} selectedOption 
+ */
 function getVacas(selectedOption) {
     // Petición vía AJAX para obtener los dispositivos asociados a la zona
     $.ajax({
@@ -25,6 +30,10 @@ function getVacas(selectedOption) {
     });
 }
 
+/**
+ * Asigna una imagen de batería de acuerdo al nivel que recibe (0 - 4)
+ * @param {string} batLevel 
+ */
 function drawBattery(batLevel) {
     var level = "";
     switch (batLevel) {

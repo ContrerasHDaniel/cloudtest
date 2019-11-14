@@ -4,29 +4,22 @@ const ZonaSchema = require('../models/Zona');
 const DeviceGPS = require('../models/DeviceGPS');
 const Zona = require('../models/Zona');
 var idZ = "";
-var codG = "";
+var newReg = null;
 
 /* Ruta para registrar/actualizar un dispositivo GPS */
 router.post('/devices/dgps', async (req, res) => {    				
 	// Se obtienen todos los campos enviados por el dispositivo
-	var {_id, id_ganado, nombre, id_zona, lat, lng, battery, alerta } = req.body;
-	// TEMPORAL: Mientras el dispositivo no emita la batería restante se genera un número aleatorio para reemplazar el valor nulo recibido.
-	if(battery=='null' || battery == null){
-		battery = Math.floor((Math.random() * 10) + 90).toString();
-	}
-	
+	var {_id, lat, lng, battery, alerta } = req.body;
+
 	// Bandera para obtener si un dispositivo disparó una alerta.
 	alerts = alerta == 1 || alerta == "true";
 	
 	try{
 		
 		// Se crea un modelo mongoose de dispositivo para guardar/actualizar la base de datos.
-        const newReg = new DeviceGPS(
+        newReg = new DeviceGPS(
             {
-                _id:_id, 
-                id_ganado: id_ganado, 
-                nombre:nombre, 
-                id_zona: id_zona, 
+                _id:_id,
                 position:{_id: Date.now(), lat: getLat(lat), lng: getLng(lng)}, // De acuerdo al esquema interno de posicion.
                 battery: battery,
                 alerta: alerta
@@ -58,7 +51,7 @@ router.post('/devices/dgps', async (req, res) => {
     }finally{			// Siempre se verifica el estado de alerta de un dispositivo
         if(alerts===true){
             const zona = await Zona.findById(idZ);
-            io.emit('alert fired', {_id: _id, id_ganado: codG, zona: zona.nombre});
+            io.emit('alert fired', {msg: newReg});
         }
     }
 });

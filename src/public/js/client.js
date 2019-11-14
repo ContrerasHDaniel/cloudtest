@@ -1,8 +1,12 @@
 $(document).ready(function(){
+    // Inicalización del socket
     var socket = io();
+    // Evento de alerta desde el servidor
     socket.on('alert fired', function(msg){
-        console.log('here');
+
         var d = new Date();
+        
+        // Se crea la alerta en el botón de notificaciones y se da la información del dispositivo que envió la alerta
         document.getElementById('alert').innerText = "1";
         document.getElementById('alert-msg').innerHTML 
         = '<div class=\"icon-circle bg-warning\">'
@@ -10,13 +14,20 @@ $(document).ready(function(){
         + '</div><div class=\"small text-gray-500\">' + d.toString()
         + '</div> ¡Alerta! El animal ' + msg.id_ganado + ' ha salido del rancho ' + msg.zona;
 
+        // Si existe en la tabla el dispositivo con alerta, colorea de rojo
+        // y su estado cambia a desconectado
         if (document.getElementById(msg._id)) {
             updateTable(msg._id);
         }
+        // Se envía una notificación de escritorio al usuario
         notifyMe(msg.id_ganado, msg.zona);
     });
 });
 
+/**
+ * Función para cambiar el estado de un dispositivo en la tabla si se dispara la alerta
+ * @param {string} _id 
+ */
 function updateTable(_id){
     var id = "#"+_id;
     $(id).find('#status').addClass('table-danger').removeClass('table-success');

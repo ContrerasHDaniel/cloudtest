@@ -56,6 +56,7 @@
             }
         });
 
+        // Evento de click en la fila de la tabla. Muestra el modal de actualización de vaca
         $('#dataTable > tbody > tr').click(function(){
             console.log($(this).attr('value'));
             $('#updateModal').modal('show');
