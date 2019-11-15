@@ -1,5 +1,5 @@
 <!-- DataTables CDN -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.20/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/datatables.min.css"/>
 
 <!-- ganado page -->
 <div class="card shadow mb-4">
@@ -31,8 +31,10 @@
 {{> vaca_info}}
 <!-- JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- DataTables Script -->
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<!-- DataTables Scripts -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.20/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/datatables.min.js"></script>
 <script>
     $(document).ready(function(){
         var nombre = "";
@@ -40,19 +42,31 @@
 
         //Inicializa el dataTable
         var table = $('#dataTable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'pdf',
+                    text: 'Imprimir PDF',
+                    exportOptions:{ 
+                        modifier: {
+                            page: 'current'
+                        }
+                    }
+                }
+            ],
             "language": {
                 lengthMenu: "Mostrar _MENU_ registros por página",
                 zeroRecords: "No hay registros para mostrar",
                 info: "Mostrando página _PAGE_ de _PAGES_",
                 infoEmpty: "No hay registros disponibles",
                 infoFiltered: "(filtrados de un total de _MAX_ registros)",
-                search: "Buscar"
+               search: "Buscar"
             },
             "oLanguage":{
                 "oPaginate":{
                     sNext: "Siguiente",
                     sPrevious: "Anterior"
-                }
+               }
             }
         });
 
