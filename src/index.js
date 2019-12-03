@@ -62,7 +62,7 @@ app.engine('.hbs',
 						fillGanado: function(ganado) {
 							var str = "";
 							ganado.forEach(vaca => {
-								str+='<tr role=\"row\" data-toggle=\"modal\" id=\"vaca\" value=\"' + vaca._id + '\" data-target=\"#updateModal\">'
+								str+='<tr role=\"row\" data-toggle=\"modal\" id=\"mod_vaca\" value=\"' + vaca._id + '\" data-target=\"#updateModal\">'
 								+ '<td class=\"sorting_1\" id=\"tag\">'+ vaca._id + '</td>'
 								+ '<td id=\"alias\">' + vaca.alias + '</td>'
 								+ '<td id=\"breed\">' + vaca.breed + '</td>'
@@ -70,6 +70,7 @@ app.engine('.hbs',
 								+ '<td id=\"weight\">' + vaca.weight + '</td>'
 								+ '<td id=\"age\">' + vaca.age + '</td>'
 								+ '<td id=\"sex\">' + vaca.sex + '</td>'
+								+ '<td id=\"calf\">' + vaca.calf + '</td>'
 								+ '<td id=\"zone\" value=\"'+ vaca.zone_id +'\" >'+ vaca.zone_name +'</td>';
 
 								if (vaca.alerta) {

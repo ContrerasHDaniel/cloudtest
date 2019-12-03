@@ -72,8 +72,16 @@
 
         // Evento de click en la fila de la tabla. Muestra el modal de actualización de vaca
         $('#dataTable > tbody > tr').click(function(){
-            console.log($(this).attr('value'));
-            $('#updateModal').modal('show');
+            $('#modal-title').append($('#alias').text());
+            $('#modal-alias').val($('#alias').text());            
+            if($('#sex').text() == 'F'){
+                $('#modal-genre option[value="f"]');
+            } else {
+                $('#modal-genre option[value="m"]');
+            }
+
+            if($('#calf').text() == )
+            
         });
 
     });
