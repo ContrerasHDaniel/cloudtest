@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/sigfox-db-app', {
+mongoose.connect('mongodb://localhost/gantrack-db', {
 	useCreateIndex: true,
 	useNewUrlParser: true,
 	useFindAndModify: false,

@@ -81,4 +81,29 @@ function getLastLatLng(ganado){
 	return ganado;
 }
 
+router.put('/ganado', isAuthenticated, async (req, res) => {
+    var {id, alias, sex, weight, age, breed, type, vaccs, calf, iron, details} = req.body;
+    try {
+        const vaca = await Ganado.findByIdAndUpdate(id, 
+            {
+                $set: {
+                    alias: alias,
+                    sex: sex,
+                    weight: weight,
+                    age: age,
+                    breed: breed,
+                    type: type,
+                    vaccs: vaccs,
+                    calf: calf,
+                    iron: iron,
+                    details: details
+                }
+            });
+            res.sendStatus(200);
+    } catch (err){
+        console.error(err);
+        res.sendStatus(500);
+    }
+});
+
 module.exports = router;

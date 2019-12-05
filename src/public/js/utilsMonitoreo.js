@@ -1,4 +1,3 @@
-
 /**
  * Función para obtener los dispositivos asociados a una zona seleccionada
  * @param {string} selectedOption 

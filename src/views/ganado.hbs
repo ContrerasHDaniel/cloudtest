@@ -29,12 +29,13 @@
 </div>
 <!-- Modal actualizar -->
 {{> vaca_info}}
-<!-- JQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <!-- DataTables Scripts -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.20/b-1.6.1/b-colvis-1.6.1/b-flash-1.6.1/b-html5-1.6.1/b-print-1.6.1/datatables.min.js"></script>
+<!-- Custom Scripts -->
+<script type="text/javascript" src="/js/vacasCRUD.js"></script>
 <script>
     $(document).ready(function(){
         var nombre = "";
@@ -72,17 +73,28 @@
 
         // Evento de click en la fila de la tabla. Muestra el modal de actualización de vaca
         $('#dataTable > tbody > tr').click(function(){
-            $('#modal-title').append($('#alias').text());
-            $('#modal-alias').val($('#alias').text());            
-            if($('#sex').text() == 'F'){
-                $('#modal-genre option[value="f"]');
+            var id = $(this).children('#identifier').val();
+            $('#modal-title').text('Información de ' + $(this).children('#alias').text());
+            $('#modal-alias').val($(this).children('#alias').text());            
+            if($(this).children('#sex').text() == 'F'){
+                $('#modal-genre').val('f');
             } else {
-                $('#modal-genre option[value="m"]');
+                $('#modal-genre').val('m');
             }
 
-            if($('#calf').text() == )
-            
-        });
-
+            $('#selectBreed').val($(this).children('#breed').text());
+            $('#modal-age').val($(this).children('#age').text());
+            $('#modal-weight').val($(this).children('#weight').text());
+            $('#modal-type').val($(this).children('#type').text());
+            $('#modal-iron').val($(this).children('#iron').val());
+            $('#modal-calf').val($(this).children('#calf').text());
+            $('#modal-vaccs').val($(this).children('#vaccs').val());
+            $('#modal-details').val($(this).children('#details').val());
+           
+            $('#submitBtn').click(function(e){
+                e.preventDefault();
+                updateVaca(id, $('#modal-alias').val(), $('#modal-genre').val(), $('#modal-weight').val(), $('#modal-age').val(), $('#selectBreed').val(), $('#modal-type').val(), $('#modal-vaccs').val(), $('#modal-calf').val(), $('#modal-iron').val(), $('#modal-details').val());
+            });
+        });        
     });
 </script>
