@@ -29,7 +29,7 @@ function initMap(){
  */
 function updateMap(isAlert, ganado){
   clearMarkers();
-  if (isAlert) {
+  if (isAlert) {    
     var lat = ganado.lat;
     var lng = ganado.lng;
     latlngFocused = new google.maps.LatLng(lat, lng);
@@ -155,10 +155,12 @@ function clearMarkers(){
 }
 
 function replaceMarker(marker, id) {
-  markers = markers.map(function (item){
-    return item.id == id ? marker: item;
-  });
-  //var markerToDelete = markers.find(marker => marker.id === id);
+  var markerToDelete = markers.find(marker => marker.id === id);
+  var index = markers.indexOf(markerToDelete);
+
+  if (~index) {
+    markers[index] = marker;
+  }
   
 }
 

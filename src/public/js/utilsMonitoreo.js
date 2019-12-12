@@ -22,7 +22,7 @@ function getVacas(selectedOption) {
             document.getElementById('tabla_vacas').innerHTML = out;
             $('#tabla_vacas > tr').click(function (){
                 vaca = {_id: $(this).attr('id'), lat: $('#lat').val(), lng: $('#lng').val(), alias: $('#name').text()}
-                updateMap(true, vaca);
+                
             });
             // Se actualiza el mapa, dibuja las vacas de la zona en el mapa dada su posición
             updateMap(false, ganado);
